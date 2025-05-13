@@ -1,0 +1,44 @@
+/* Mobile menu animations and styling */
+.mobile-menu-container {
+  transform-origin: top center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.mobile-menu-link {
+  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+}
+
+.mobile-menu-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary, #4a5568);
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+.mobile-menu-link:hover::after {
+  width: 80%;
+}
+
+/* Add active state for mobile menu items */
+.mobile-menu-link.active {
+  color: var(--color-primary, #4a5568);
+  font-weight: 600;
+}
+
+.mobile-menu-link.active::after {
+  width: 80%;
+}
+
+/* Improve tap target size for mobile */
+@media (max-width: 768px) {
+  .mobile-menu-link {
+    padding: 12px 16px;
+    margin: 4px 0;
+  }
+}
