@@ -1,32 +1,35 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import kitchenImage from '../../assets/images/Kitchen.jpg';
+import closetImage from '../../assets/images/Closet.jpg';
+import bedroomImage from '../../assets/images/AnotherBedroom.jpg';
 
 // Ensure ScrollTrigger is registered
 gsap.registerPlugin(ScrollTrigger);
 
-// Sample furniture data
+// Furniture data with local images
 const featuredItems = [
   {
     id: 1,
-    title: 'Hand-Carved Dining Table',
-    description: 'Made from reclaimed oak with hand-carved details',
-    imageUrl: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80',
-    price: '$1,299'
+    title: 'Modern Kitchen Design',
+    description: 'Custom cabinetry with premium hardwood and elegant details',
+    imageUrl: kitchenImage,
+    price: '$8,500'
   },
   {
     id: 2,
-    title: 'Rustic Bookshelf',
-    description: 'Solid wood bookshelf with natural edge detailing',
-    imageUrl: 'https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
-    price: '$899'
+    title: 'Luxury Closet Solution',
+    description: 'Tailored storage system with integrated lighting and hardware',
+    imageUrl: closetImage,
+    price: '$5,200'
   },
   {
     id: 3,
-    title: 'Handcrafted Armchair',
-    description: 'Premium leather and walnut frame with traditional joinery',
-    imageUrl: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1887&q=80',
-    price: '$1,199'
+    title: 'Bedroom Ensemble',
+    description: 'Complete bedroom furniture set with matching finishes',
+    imageUrl: bedroomImage,
+    price: '$7,800'
   }
 ];
 

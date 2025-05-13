@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import heroBgImage from '../../assets/images/Bedroom.jpg';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -39,12 +40,11 @@ const Hero = () => {
     };
   }, []);
 
-  return (
-    <section 
+  return (    <section 
       ref={heroRef}
       className="bg-cover bg-center h-screen flex items-center"
       style={{ 
-        backgroundImage: "linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1556185781-a47769abb7ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80')"
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.4)), url(${heroBgImage})`
       }}
     >
       <div className="container-custom text-white">

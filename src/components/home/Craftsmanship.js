@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import bigBathroomImage from '../../assets/images/BigBathroom.jpg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,11 +47,10 @@ const Craftsmanship = () => {
   return (
     <section ref={sectionRef} className="py-20 bg-white">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div ref={imageRef} className="rounded-lg overflow-hidden shadow-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">          <div ref={imageRef} className="rounded-lg overflow-hidden shadow-xl">
             <img
-              src="https://images.unsplash.com/photo-1622372738946-62e02505feb3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80"
-              alt="Craftsman working on furniture"
+              src={bigBathroomImage}
+              alt="Luxury bathroom furniture"
               className="w-full h-auto object-cover"
             />
           </div>
