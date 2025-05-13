@@ -36,15 +36,27 @@ const Navbar = () => {
           <div className="text-2xl font-serif font-bold text-primary">
             VikAno <span className="text-accent text-sm">Furniture</span>
           </div>
-        </Link>
-
-        <div className="hidden md:flex space-x-8">
-          {['Home', 'Gallery', 'About', 'Contact'].map((item, index) => (
+        </Link>        <div className="hidden md:flex space-x-8">
+          {['Home', 'Gallery', 'About', 'Contact', 'Calculator'].map((item, index) => (
             <Link
               key={item}
               to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-              className="text-gray-800 hover:text-primary transition-colors duration-300 font-medium"
+              className="text-gray-800 hover:text-primary transition-colors duration-300 font-medium relative nav-link"
               ref={el => menuItemsRef.current[index] = el}
+              onMouseEnter={(e) => {
+                gsap.to(e.target, {
+                  scale: 1.05,
+                  duration: 0.2,
+                  ease: 'power2.out'
+                });
+              }}
+              onMouseLeave={(e) => {
+                gsap.to(e.target, {
+                  scale: 1,
+                  duration: 0.2,
+                  ease: 'power2.out'
+                });
+              }}
             >
               {item}
             </Link>
