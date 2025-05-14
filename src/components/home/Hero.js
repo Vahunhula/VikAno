@@ -1,12 +1,14 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 import heroBgImage from '../../assets/images/Bedroom.jpg';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+  const { t } = useTranslation();
   const heroRef = useRef(null);
   const headingRef = useRef(null);
   const subheadingRef = useRef(null);
@@ -47,27 +49,26 @@ const Hero = () => {
         backgroundImage: `linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.4)), url(${heroBgImage})`
       }}
     >
-      <div className="container-custom text-white">
-        <h1 
+      <div className="container-custom text-white">        <h1 
           ref={headingRef}
           className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-6 max-w-3xl"
         >
-          Handcrafted Furniture with Soul and Character
+          {t('hero.title')}
         </h1>
         
         <p 
           ref={subheadingRef}
           className="text-xl md:text-2xl max-w-2xl mb-8 text-gray-200"
         >
-          Each piece tells a story of craftsmanship, tradition, and timeless design
+          {t('hero.subtitle')}
         </p>
         
         <div ref={ctaRef} className="flex flex-wrap gap-4">
           <a href="/gallery" className="btn-primary">
-            Explore Collection
+            {t('hero.cta')}
           </a>
-          <a href="/contact" className="border-2 border-white text-white px-6 py-2 rounded-md hover:bg-white hover:text-accent transition-all duration-300">
-            Get in Touch
+          <a href="/contact" className="border-2 border-white text-white px-6 py-2 rounded-md hover:bg-white hover:text-accent dark:hover:text-gray-800 transition-all duration-300">
+            {t('contact.title')}
           </a>
         </div>
       </div>

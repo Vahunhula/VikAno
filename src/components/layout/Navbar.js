@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
 import LanguageSwitcher from '../common/LanguageSwitcher';
+import ThemeSwitcher from '../common/ThemeSwitcher';
 import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
@@ -130,13 +131,12 @@ const Navbar = () => {
     if (mobileMenuOpen) {
       closeMobileMenu();
     }
-  }, [location.pathname]);
-  return (
-    <nav ref={navRef} className="bg-white shadow-md py-4 relative z-50">
+  }, [location.pathname]);  return (
+    <nav ref={navRef} className="bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-4 relative z-50">
       <div className="container-custom flex justify-between items-center">
         <Link to="/" className="flex items-center" ref={logoRef}>
-          <div className="text-2xl font-serif font-bold text-primary">
-            VikAno <span className="text-accent text-sm">Furniture</span>
+          <div className="text-2xl font-serif font-bold text-primary dark:text-secondary">
+            VikAno <span className="text-accent dark:text-gray-300 text-sm">Furniture</span>
           </div>
         </Link>
           {/* Desktop Navigation */}
@@ -151,7 +151,7 @@ const Navbar = () => {
             <Link
               key={item.key}
               to={item.key === 'Home' ? '/' : `/${item.key.toLowerCase()}`}
-              className="text-gray-800 hover:text-primary transition-colors duration-300 font-medium relative nav-link"
+              className="text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-secondary transition-colors duration-300 font-medium relative nav-link"
               ref={el => menuItemsRef.current[index] = el}
               onMouseEnter={(e) => {
                 gsap.to(e.target, {
@@ -169,16 +169,15 @@ const Navbar = () => {
             >
               {item.label}
             </Link>
-          ))}
-          <div className="ml-4 border-l pl-4 border-gray-200">
+          ))}          <div className="ml-4 border-l pl-4 border-gray-200 dark:border-gray-700 flex items-center gap-3">
             <LanguageSwitcher />
+            <ThemeSwitcher />
           </div>
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <button 
-            className="text-gray-800 focus:outline-none" 
+        <div className="md:hidden">          <button 
+            className="text-gray-800 dark:text-gray-200 focus:outline-none" 
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
@@ -198,7 +197,7 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div 
           ref={mobileMenuRef}
-          className="absolute top-full left-0 w-full bg-white shadow-md py-4 px-4 z-50 mobile-menu-container"          style={{ opacity: 0 }} // Initial state for GSAP animation
+          className="absolute top-full left-0 w-full bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 py-4 px-4 z-50 mobile-menu-container"          style={{ opacity: 0 }} // Initial state for GSAP animation
         >
           <div className="flex flex-col">
             {[
@@ -211,14 +210,14 @@ const Navbar = () => {
               <Link
                 key={item.key}
                 to={item.key === 'Home' ? '/' : `/${item.key.toLowerCase()}`}
-                className={`text-gray-800 hover:text-primary transition-colors duration-300 font-medium py-3 px-4 rounded-md mobile-menu-link ${isActive(item.key) ? 'active' : ''}`}
+                className={`text-gray-800 dark:text-gray-200 hover:text-primary dark:hover:text-secondary transition-colors duration-300 font-medium py-3 px-4 rounded-md mobile-menu-link ${isActive(item.key) ? 'active' : ''}`}
                 onClick={handleMobileLinkClick}
               >
                 {item.label}
               </Link>
-            ))}
-            <div className="py-3 px-4">
+            ))}            <div className="py-3 px-4 flex items-center gap-4">
               <LanguageSwitcher />
+              <ThemeSwitcher />
             </div>
           </div>
         </div>

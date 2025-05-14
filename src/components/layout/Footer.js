@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+  
   return (
-    <footer className="bg-accent text-white py-12">
+    <footer className="bg-accent dark:bg-gray-800 text-white py-12">
       <div className="container-custom">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
@@ -34,9 +37,8 @@ const Footer = () => {
             </address>
           </div>
         </div>
-        
-        <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} VikAno Furniture. All rights reserved.</p>
+          <div className="border-t border-gray-700 dark:border-gray-600 mt-8 pt-6 text-center text-gray-400">
+          <p>&copy; {new Date().getFullYear()} VikAno Furniture. {t('footer.rights')}</p>
         </div>
       </div>
     </footer>

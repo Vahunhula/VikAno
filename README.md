@@ -1,4 +1,14 @@
-# Getting Started with Create React App
+# VikAno Furniture Website
+
+This is the website for VikAno Furniture showcasing custom handcrafted furniture.
+
+## Features
+
+### Dark Mode
+The website supports a light/dark mode toggle. Users can switch between themes by clicking the theme toggle button in the navigation bar. The selected theme preference is saved in local storage and will be remembered on subsequent visits.
+
+### Multilingual Support
+The website is available in English and Georgian languages. Users can switch languages using the language toggle in the navigation bar.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

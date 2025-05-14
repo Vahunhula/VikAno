@@ -3,6 +3,11 @@
     "loading": "Loading...",
     "ready": "Ready"
   },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
   "navbar": {
     "home": "Home",
     "gallery": "Gallery",

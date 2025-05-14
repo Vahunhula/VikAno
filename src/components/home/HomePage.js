@@ -6,8 +6,7 @@ import BeforeAfterSlider from './BeforeAfterSlider';
 import Testimonial from './Testimonial';
 
 const HomePage = () => {
-  return (
-    <div>
+  return (    <div className="dark:bg-gray-900">
       <Hero />
       <FeaturedCollection />
       <BeforeAfterSlider />

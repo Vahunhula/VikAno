@@ -4,10 +4,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
-body {
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  body {
+    @apply m-0 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Smooth transition when switching themes */
+  * {
+    @apply transition-colors duration-200;
+  }
 }
 
 @layer components {
@@ -16,6 +23,6 @@ body {
   }
   
   .btn-primary {
-    @apply bg-primary text-white px-6 py-2 rounded-md hover:bg-opacity-90 transition-all duration-300;
+    @apply bg-primary dark:bg-secondary text-white dark:text-gray-900 px-6 py-2 rounded-md hover:bg-opacity-90 transition-all duration-300;
   }
 }
