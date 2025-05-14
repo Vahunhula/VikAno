@@ -70,17 +70,59 @@
   "language": {
     "en": "English",
     "ka": "Georgian"
-  },
-  "gallery": {
+  },  "gallery": {
     "title": "Our Furniture Gallery",
-    "description": "This page will showcase all of our handcrafted furniture pieces."
-  },
-  "about": {
+    "description": "This page will showcase all of our handcrafted furniture pieces.",
+    "filter": {
+      "title": "Filter Collection",
+      "description": "Explore our designs by category or view our complete collection"
+    },
+    "categories": {
+      "all": "All",
+      "bedroom": "Bedroom",
+      "kitchen": "Kitchen",
+      "cottage": "Cottage",
+      "closet": "Closet",
+      "bathroom": "Bathroom"
+    },
+    "featured": "New"
+  },"about": {
     "title": "About VikAno",
-    "description": "This page will tell the story of our company and craftspeople."
-  },
-  "contact": {
+    "description": "Our company specializes in the custom manufacturing of furniture, cottages, and kitchen interiors.",
+    "subheader": "Custom Craftsmanship Excellence",
+    "mission": "Our Mission",
+    "missionText": "At VikAno, our mission is to transform spaces through exceptional craftsmanship and personalized design.",
+    "values": "Our Values",
+    "specializations": "Our Specializations",
+    "furniture": "Custom Furniture",
+    "cottages": "Cottage Construction",
+    "kitchens": "Kitchen Interiors",
+    "promise": "Our Promise To You",
+    "cta": "Ready to Transform Your Space?",
+    "ctaText": "Let us help you create furniture and interiors that perfectly suit your needs and reflect your personality.",
+    "exploreButton": "Explore Our Work",
+    "contactButton": "Contact Us"
+  },  "contact": {
     "title": "Contact Us",
-    "description": "This page will provide contact information and a form to get in touch with us."
+    "description": "Have questions or ready to transform your space? Reach out to us today.",
+    "callToAction": "Get in touch with our team",
+    "info": {
+      "address": "123 Furniture Lane, Woodwork City, WC 12345",
+      "phone": "598314522",
+      "email": "Vahoberkaci@gmail.com",
+      "hours": "Monday - Friday: 9am - 6pm | Saturday: 10am - 4pm"
+    },
+    "form": {
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Your message has been sent. We'll get back to you soon!",
+      "error": "There was an error sending your message. Please try again."
+    },
+    "callUs": "Call Us",
+    "emailUs": "Email Us",
+    "visitUs": "Visit Our Showroom"
   }
 }

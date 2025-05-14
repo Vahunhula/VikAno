@@ -12,6 +12,9 @@ import bedroomImage from '../../assets/images/Bedroom.jpg';
 import anotherBedroomImage from '../../assets/images/AnotherBedroom.jpg';
 import bigBathroomImage from '../../assets/images/BigBathroom.jpg';
 import anotherBiggerCloset from '../../assets/images/AnotherBiggerCloset.jpg';
+import cottageImage from '../../assets/images/Cottage.jpg';
+import anotherCottageImage from '../../assets/images/AnotherPictureOfSameCottage.jpg';
+import newBrownBedroomImage from '../../assets/images/NewBigBrownBedroom.jpg';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -59,6 +62,30 @@ const galleryItems = [
     category: 'closet',
     description: 'Premium walk-in closet with specialized compartments',
     imageUrl: anotherBiggerCloset
+  },
+  {
+    id: 7,
+    title: 'Elegant Brown Bedroom',
+    category: 'bedroom',
+    featured: true,
+    description: 'Luxurious bedroom with rich brown tones and custom woodwork',
+    imageUrl: newBrownBedroomImage
+  },
+  {
+    id: 8,
+    title: 'Modern Cottage Exterior',
+    category: 'cottage',
+    featured: true,
+    description: 'Contemporary cottage design with natural wood elements',
+    imageUrl: cottageImage
+  },
+  {
+    id: 9,
+    title: 'Cottage Garden View',
+    category: 'cottage',
+    featured: true,
+    description: 'Charming cottage with landscaped surroundings and patio',
+    imageUrl: anotherCottageImage
   }
 ];
 
@@ -153,8 +180,10 @@ const GalleryGrid = () => {
                     alt={item.title}
                     className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
                     loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
+                  />              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
+                    {item.featured && (
+                      <span className="absolute top-4 right-4 bg-primary/90 dark:bg-secondary/90 text-white text-xs font-bold uppercase px-2 py-1 rounded-sm">New</span>
+                    )}
                     <h3 className="text-white font-bold text-xl mb-1">
                       {item.title}
                     </h3>

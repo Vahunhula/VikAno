@@ -11,6 +11,8 @@ import LoadingScreen from './components/layout/LoadingScreen';
 import HomePage from './components/home/HomePage';
 import Calculator from './components/calculator/Calculator';
 import GalleryPage from './components/gallery/GalleryPage';
+import AboutPage from './components/about/AboutPage';
+import ContactPage from './components/contact/ContactPage';
 
 // Wrapper to provide location to pages
 const LocationProvider = ({ children }) => {
@@ -21,29 +23,7 @@ const LocationProvider = ({ children }) => {
   });
 };
 
-const About = () => {
-  const { t } = useTranslation();
-  return (
-    <div className="py-20 px-4">
-      <div className="container-custom">
-        <h1 className="text-3xl font-serif font-bold mb-6">{t('about.title', 'About VikAno')}</h1>
-        <p>{t('about.description', 'This page will tell the story of our company and craftspeople.')}</p>
-      </div>
-    </div>
-  );
-};
-
-const Contact = () => {
-  const { t } = useTranslation();
-  return (
-    <div className="py-20 px-4">
-      <div className="container-custom">
-        <h1 className="text-3xl font-serif font-bold mb-6">{t('contact.title', 'Contact Us')}</h1>
-        <p>{t('contact.description', 'This page will provide contact information and a form to get in touch with us.')}</p>
-      </div>
-    </div>
-  );
-};
+// All page components are now properly imported
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -102,6 +82,8 @@ function AppContent() {
         <Route path="/" element={<LocationProvider><HomePage /></LocationProvider>} />
         <Route path="/gallery" element={<LocationProvider><GalleryPage /></LocationProvider>} />
         <Route path="/calculator" element={<LocationProvider><Calculator /></LocationProvider>} />
+        <Route path="/about" element={<LocationProvider><AboutPage /></LocationProvider>} />
+        <Route path="/contact" element={<LocationProvider><ContactPage /></LocationProvider>} />
       </Routes>
     </Layout>
   );
