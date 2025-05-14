@@ -1,6 +1,7 @@
 ﻿import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 import beforeImg from '../../assets/images/BeforeUs.jpg';
 import afterImg from '../../assets/images/AfterUs.jpg';
 
@@ -15,6 +16,7 @@ const BeforeAfterSlider = () => {
   const [isDragging, setIsDragging] = useState(false);
   // Track if we just finished dragging to prevent hover effects
   const justFinishedDragging = useRef(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const container = containerRef.current;
@@ -185,10 +187,10 @@ const BeforeAfterSlider = () => {
     <div className="py-20 bg-gray-50">
       <div className="container-custom">
         <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-center text-accent">
-          Our Transformation Projects
+          {t('beforeAfter.title')}
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-center mb-12">
-          See the difference our craftsmanship makes in real spaces
+          {t('beforeAfter.subtitle')}
         </p>
 
         <div 
@@ -205,7 +207,7 @@ const BeforeAfterSlider = () => {
           {/* After image (full width) */}
           <img 
             src={afterImg} 
-            alt="After transformation" 
+            alt={t('beforeAfter.after')} 
             className="absolute top-0 left-0 w-full h-full object-cover"
             draggable="false"
             style={{ pointerEvents: 'none' }}
@@ -219,7 +221,7 @@ const BeforeAfterSlider = () => {
           >
             <img 
               src={beforeImg} 
-              alt="Before transformation" 
+              alt={t('beforeAfter.before')} 
               className="absolute top-0 left-0 w-full h-full object-cover"
               style={{ 
                 width: `${Math.max(100, 100 / (sliderPosition/100))}%`, 
@@ -254,7 +256,7 @@ const BeforeAfterSlider = () => {
         </div>
         
         <p className="text-center text-gray-500 mt-4">
-          Drag the slider or hover to see the transformation
+          {t('beforeAfter.dragInstructions', 'Drag the slider or hover to see the transformation')}
         </p>
       </div>
     </div>

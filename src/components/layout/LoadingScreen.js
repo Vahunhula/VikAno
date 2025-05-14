@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { gsap } from 'gsap';
+import { useTranslation } from 'react-i18next';
 import logo from '../../assets/images/Logo.jpg';
 // Import critical hero images to preload
 import heroImage1 from '../../assets/images/BeforeUs.jpg';
@@ -8,6 +9,7 @@ import heroImage2 from '../../assets/images/AfterUs.jpg';
 const LoadingScreen = ({ finishLoading }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [assetsLoaded, setAssetsLoaded] = useState(false);
+  const { t } = useTranslation();
 
   // Preload critical images
   useEffect(() => {
@@ -88,10 +90,9 @@ const LoadingScreen = ({ finishLoading }) => {
               <div className="h-2 w-2 bg-primary rounded-full animate-bounce" style={{animationDelay: '300ms'}}></div>
             </div>
           </div>
-        </div>
-        <div className="loading-text mt-12 text-center">
-          <p className="text-gray-600 font-serif text-lg">VikAno Furniture</p>
-          <p className="text-sm text-gray-400 mt-2">{assetsLoaded ? "Ready" : "Loading experience..."}</p>
+        </div>        <div className="loading-text mt-12 text-center">
+          <p className="text-gray-600 font-serif text-lg">{t('app.title')}</p>
+          <p className="text-sm text-gray-400 mt-2">{assetsLoaded ? t('app.ready', "Ready") : t('app.loading')}</p>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import './App.css';
 
 // Layout
@@ -20,32 +21,41 @@ const LocationProvider = ({ children }) => {
 };
 
 // Placeholder components for other pages
-const Gallery = () => (
-  <div className="py-20 px-4">
-    <div className="container-custom">
-      <h1 className="text-3xl font-serif font-bold mb-6">Our Furniture Gallery</h1>
-      <p>This page will showcase all of our handcrafted furniture pieces.</p>
+const Gallery = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="py-20 px-4">
+      <div className="container-custom">
+        <h1 className="text-3xl font-serif font-bold mb-6">{t('gallery.title', 'Our Furniture Gallery')}</h1>
+        <p>{t('gallery.description', 'This page will showcase all of our handcrafted furniture pieces.')}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-const About = () => (
-  <div className="py-20 px-4">
-    <div className="container-custom">
-      <h1 className="text-3xl font-serif font-bold mb-6">About VikAno</h1>
-      <p>This page will tell the story of our company and craftspeople.</p>
+const About = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="py-20 px-4">
+      <div className="container-custom">
+        <h1 className="text-3xl font-serif font-bold mb-6">{t('about.title', 'About VikAno')}</h1>
+        <p>{t('about.description', 'This page will tell the story of our company and craftspeople.')}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
-const Contact = () => (
-  <div className="py-20 px-4">
-    <div className="container-custom">
-      <h1 className="text-3xl font-serif font-bold mb-6">Contact Us</h1>
-      <p>This page will provide contact information and a form to get in touch with us.</p>
+const Contact = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="py-20 px-4">
+      <div className="container-custom">
+        <h1 className="text-3xl font-serif font-bold mb-6">{t('contact.title', 'Contact Us')}</h1>
+        <p>{t('contact.description', 'This page will provide contact information and a form to get in touch with us.')}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -91,6 +101,12 @@ function App() {
 // Separate component to use hooks inside Router
 function AppContent() {
   const location = useLocation();
+  const { t } = useTranslation();
+  
+  // Update the document title when language changes
+  useEffect(() => {
+    document.title = t('app.title');
+  }, [t]);
   
   return (
     <Layout>

@@ -1,0 +1,81 @@
+{  "app": {
+    "title": "VikAno Furniture",
+    "loading": "Loading...",
+    "ready": "Ready"
+  },
+  "navbar": {
+    "home": "Home",
+    "gallery": "Gallery",
+    "about": "About",
+    "contact": "Contact",
+    "calculator": "Calculator"
+  },
+  "hero": {
+    "title": "Custom Crafted Furniture",
+    "subtitle": "Handmade with passion and precision",
+    "cta": "Explore Our Collection"
+  },
+  "featured": {
+    "title": "Featured Collection",
+    "viewItem": "View Item",
+    "items": {
+      "kitchen": {
+        "title": "Modern Kitchen Design",
+        "description": "Custom cabinetry with premium hardwood and elegant details"
+      },
+      "closet": {
+        "title": "Luxury Closet Solution",
+        "description": "Tailored storage system with integrated lighting and hardware"
+      },
+      "bedroom": {
+        "title": "Bedroom Ensemble",
+        "description": "Complete bedroom furniture set with matching finishes"
+      }
+    }
+  },
+  "beforeAfter": {
+    "title": "Transformations",
+    "subtitle": "Slide to see the difference",
+    "before": "Before",
+    "after": "After",
+    "dragInstructions": "Drag the slider or hover to see the transformation"
+  },
+  "craftsmanship": {
+    "title": "Our Craftsmanship",
+    "description": "Every piece of furniture is meticulously crafted by our skilled artisans, combining traditional woodworking techniques with modern design principles.",
+    "readMore": "Read More About Our Process"
+  },
+  "testimonials": {
+    "title": "What Our Clients Say",
+    "prev": "Previous",
+    "next": "Next"
+  },
+  "calculator": {
+    "title": "Furniture Cost Calculator",
+    "description": "Use our calculator to estimate the cost of your custom furniture project.",
+    "comingSoon": "Calculator coming soon..."
+  },
+  "footer": {
+    "rights": "All Rights Reserved",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "subscribe": "Subscribe to Our Newsletter",
+    "subscribeButton": "Subscribe"
+  },
+  "language": {
+    "en": "English",
+    "ka": "Georgian"
+  },
+  "gallery": {
+    "title": "Our Furniture Gallery",
+    "description": "This page will showcase all of our handcrafted furniture pieces."
+  },
+  "about": {
+    "title": "About VikAno",
+    "description": "This page will tell the story of our company and craftspeople."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "This page will provide contact information and a form to get in touch with us."
+  }
+}

@@ -2,14 +2,17 @@ import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { Link, useLocation } from 'react-router-dom';
 import './Navbar.css';
+import LanguageSwitcher from '../common/LanguageSwitcher';
+import { useTranslation } from 'react-i18next';
 
 const Navbar = () => {
   const navRef = useRef(null);
   const logoRef = useRef(null);
-  const menuItemsRef = useRef([]);
+  const menuItemsRef = useRef([]); 
   const mobileMenuRef = useRef(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useTranslation();
   
   // Helper to determine if a link is active
   const isActive = (path) => {
@@ -136,13 +139,18 @@ const Navbar = () => {
             VikAno <span className="text-accent text-sm">Furniture</span>
           </div>
         </Link>
-        
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8">
-          {['Home', 'Gallery', 'About', 'Contact', 'Calculator'].map((item, index) => (
+          {/* Desktop Navigation */}
+        <div className="hidden md:flex space-x-8 items-center">
+          {[
+            { key: 'Home', label: t('navbar.home') },
+            { key: 'Gallery', label: t('navbar.gallery') },
+            { key: 'About', label: t('navbar.about') },
+            { key: 'Contact', label: t('navbar.contact') },
+            { key: 'Calculator', label: t('navbar.calculator') }
+          ].map((item, index) => (
             <Link
-              key={item}
-              to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+              key={item.key}
+              to={item.key === 'Home' ? '/' : `/${item.key.toLowerCase()}`}
               className="text-gray-800 hover:text-primary transition-colors duration-300 font-medium relative nav-link"
               ref={el => menuItemsRef.current[index] = el}
               onMouseEnter={(e) => {
@@ -157,12 +165,14 @@ const Navbar = () => {
                   scale: 1,
                   duration: 0.2,
                   ease: 'power2.out'
-                });
-              }}
+                });              }}
             >
-              {item}
+              {item.label}
             </Link>
           ))}
+          <div className="ml-4 border-l pl-4 border-gray-200">
+            <LanguageSwitcher />
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
@@ -188,20 +198,28 @@ const Navbar = () => {
       {mobileMenuOpen && (
         <div 
           ref={mobileMenuRef}
-          className="absolute top-full left-0 w-full bg-white shadow-md py-4 px-4 z-50 mobile-menu-container"
-          style={{ opacity: 0 }} // Initial state for GSAP animation
+          className="absolute top-full left-0 w-full bg-white shadow-md py-4 px-4 z-50 mobile-menu-container"          style={{ opacity: 0 }} // Initial state for GSAP animation
         >
           <div className="flex flex-col">
-            {['Home', 'Gallery', 'About', 'Contact', 'Calculator'].map((item) => (
+            {[
+              { key: 'Home', label: t('navbar.home') },
+              { key: 'Gallery', label: t('navbar.gallery') },
+              { key: 'About', label: t('navbar.about') },
+              { key: 'Contact', label: t('navbar.contact') },
+              { key: 'Calculator', label: t('navbar.calculator') }
+            ].map((item) => (
               <Link
-                key={item}
-                to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                className={`text-gray-800 hover:text-primary transition-colors duration-300 font-medium py-3 px-4 rounded-md mobile-menu-link ${isActive(item) ? 'active' : ''}`}
+                key={item.key}
+                to={item.key === 'Home' ? '/' : `/${item.key.toLowerCase()}`}
+                className={`text-gray-800 hover:text-primary transition-colors duration-300 font-medium py-3 px-4 rounded-md mobile-menu-link ${isActive(item.key) ? 'active' : ''}`}
                 onClick={handleMobileLinkClick}
               >
-                {item}
+                {item.label}
               </Link>
             ))}
+            <div className="py-3 px-4">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       )}
