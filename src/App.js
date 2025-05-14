@@ -10,6 +10,7 @@ import LoadingScreen from './components/layout/LoadingScreen';
 // Pages
 import HomePage from './components/home/HomePage';
 import Calculator from './components/calculator/Calculator';
+import GalleryPage from './components/gallery/GalleryPage';
 
 // Wrapper to provide location to pages
 const LocationProvider = ({ children }) => {
@@ -18,19 +19,6 @@ const LocationProvider = ({ children }) => {
   return React.Children.map(children, child => {
     return React.cloneElement(child, { location });
   });
-};
-
-// Placeholder components for other pages
-const Gallery = () => {
-  const { t } = useTranslation();
-  return (
-    <div className="py-20 px-4">
-      <div className="container-custom">
-        <h1 className="text-3xl font-serif font-bold mb-6">{t('gallery.title', 'Our Furniture Gallery')}</h1>
-        <p>{t('gallery.description', 'This page will showcase all of our handcrafted furniture pieces.')}</p>
-      </div>
-    </div>
-  );
 };
 
 const About = () => {
@@ -112,9 +100,7 @@ function AppContent() {
     <Layout>
       <Routes location={location}>
         <Route path="/" element={<LocationProvider><HomePage /></LocationProvider>} />
-        <Route path="/gallery" element={<LocationProvider><Gallery /></LocationProvider>} />
-        <Route path="/about" element={<LocationProvider><About /></LocationProvider>} />
-        <Route path="/contact" element={<LocationProvider><Contact /></LocationProvider>} />
+        <Route path="/gallery" element={<LocationProvider><GalleryPage /></LocationProvider>} />
         <Route path="/calculator" element={<LocationProvider><Calculator /></LocationProvider>} />
       </Routes>
     </Layout>
