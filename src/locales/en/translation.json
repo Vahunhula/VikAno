@@ -54,11 +54,50 @@
     "title": "What Our Clients Say",
     "prev": "Previous",
     "next": "Next"
-  },
-  "calculator": {
+  },  "calculator": {
     "title": "Furniture Cost Calculator",
     "description": "Use our calculator to estimate the cost of your custom furniture project.",
-    "comingSoon": "Calculator coming soon..."
+    "comingSoon": "Calculator coming soon...",
+    "disclaimer": "Disclaimer: Prices shown are approximate and for orientation purposes only. The final price may vary based on specific requirements, materials availability, and complexity of the design. Please contact us for an accurate quote.",
+    "furnitureType": "What would you like to build?",
+    "size": "Size (in square meters - m²)",
+    "material": "Material Quality",
+    "types": {
+      "kitchen": "Kitchen",
+      "bedroom": "Bedroom with Wardrobe",
+      "cottage": "Cottage",
+      "closet": "Closet",
+      "bathroom": "Bathroom Furniture"
+    },
+    "materials": {
+      "turkish": "Turkish Material",
+      "austrianBelarusian": "Austrian & Belarusian Material",
+      "italianSpanish": "Italian & Spanish Material"
+    },
+    "perSquareMeter": "GEL/m²",
+    "calculate": "Calculate Estimated Price",    "result": {
+      "estimatedPrice": "Estimated Price",
+      "for": "For a",
+      "with": "with",
+      "note": "Important Note",
+      "approximatePrice": "This is an approximate price. The final cost may vary based on specific design requirements, additional features, and materials availability."
+    },
+    "calculateAgain": "Calculate Again",
+    "contactQuote": "Contact For Quote",
+    "included": {
+      "title": "What's Included",
+      "materials": "Premium quality materials based on your selection",
+      "mechanisms": "Quality mechanisms, hinges, and slides",
+      "installation": "Professional installation",
+      "customization": "Basic customization options"
+    },
+    "materialsInfo": {
+      "title": "Materials Information",
+      "turkish": "Turkish Material: Affordable and durable option for budget-conscious projects.",
+      "austrianBelarusian": "Austrian & Belarusian Material: Mid-range materials offering excellent quality-to-price ratio.",
+      "italianSpanish": "Italian & Spanish Material: Premium materials with superior durability, finish, and aesthetic appeal.",
+      "note": "All our furniture comes with quality mechanisms, hinges, and slides regardless of material choice."
+    }
   },
   "footer": {
     "rights": "All Rights Reserved",
