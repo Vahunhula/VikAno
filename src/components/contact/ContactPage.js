@@ -4,7 +4,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
 import contactHeroImage from '../../assets/images/BigBathroom.jpg';
-import emailjs from '@emailjs/browser';
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -18,7 +17,7 @@ const ContactPage = () => {
     message: ''
   });
   const [formStatus, setFormStatus] = useState(null);
-    const heroRef = useRef(null);
+  const heroRef = useRef(null);
   const contentRef = useRef(null);
   const formRef = useRef(null);
   const formContainerRef = useRef(null);
@@ -33,47 +32,46 @@ const ContactPage = () => {
       [name]: value
     });
   };
+  
   // Handle automatic phone dialing for all users
   const handlePhoneClick = (e) => {
     e.preventDefault();
     window.location.href = `tel:${t('contact.info.phone')}`;
-  };  // Handle form submission
+  };  
+  
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormStatus('submitting');    try {
-      // Send email using EmailJS
-      const serviceID = 'service_i7v2l6n';  // Your EmailJS service ID
-      const templateID = 'template_b84dw7b'; // Your EmailJS template ID
+    setFormStatus('submitting');
+    
+    try {
+      // Submit the form directly to formsubmit.co
+      const form = formRef.current;
+      const formData = new FormData(form);
       
-      // Add parameters with recipient email address
-      const templateParams = {
-        from_name: formState.name,
-        from_email: formState.email,
-        to_name: 'VikAno Furniture',
-        to_email: 'Vahoberkaci@gmail.com', // Recipient email address
-        subject: formState.subject,
-        message: formState.message,
-        reply_to: formState.email,
-      };
-      
-      // Use the sendForm method with explicit parameters
-      await emailjs.send(serviceID, templateID, templateParams);
-      
-      // Reset form
-      setFormState({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+      const response = await fetch("https://formsubmit.co/VikAnoBiz@gmail.com", {
+        method: "POST",
+        body: formData
       });
       
-      setFormStatus('success');
-      
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus(null);
-      }, 5000);
-      
+      if (response.ok) {
+        // Reset form
+        setFormState({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+        
+        setFormStatus('success');
+        
+        // Clear success message after 5 seconds
+        setTimeout(() => {
+          setFormStatus(null);
+        }, 5000);
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
       console.error(error);
       setFormStatus('error');
@@ -83,11 +81,7 @@ const ContactPage = () => {
         setFormStatus(null);
       }, 5000);
     }
-  };  // Initialize EmailJS
-  useEffect(() => {
-    // Initialize with your EmailJS public key
-    emailjs.init("3vpgLCgdudczMx0I-");
-  }, []);
+  };
 
   // GSAP animations
   useEffect(() => {
@@ -206,15 +200,20 @@ const ContactPage = () => {
                 >
                   {t('contact.form.error')}
                 </motion.div>
-              )}              <form ref={formRef} onSubmit={handleSubmit}>
+              )}              <form ref={formRef} onSubmit={handleSubmit} action="https://formsubmit.co/VikAnoBiz@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New message from VikAno website" />
+                <input type="hidden" name="_next" value={window.location.href} />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_autoresponse" value="Thank you for contacting VikAno Furniture. We have received your message and will get back to you soon." />
+                
                 <div className="mb-6">
-                  <label htmlFor="from_name" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                     {t('contact.form.name')}
                   </label>
                   <input 
                     type="text" 
-                    id="from_name" 
-                    name="from_name" 
+                    id="name" 
+                    name="name" 
                     value={formState.name}
                     onChange={(e) => setFormState({...formState, name: e.target.value})}
                     required
@@ -223,13 +222,13 @@ const ContactPage = () => {
                 </div>
 
                 <div className="mb-6">
-                  <label htmlFor="from_email" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
                     {t('contact.form.email')}
                   </label>
                   <input 
                     type="email" 
-                    id="from_email" 
-                    name="from_email"
+                    id="email" 
+                    name="email"
                     value={formState.email}
                     onChange={(e) => setFormState({...formState, email: e.target.value})}
                     required
@@ -266,11 +265,7 @@ const ContactPage = () => {
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-secondary bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
                   ></textarea>
                 </div>
-                  <input type="hidden" name="to_name" value="VikAno Furniture" />
-                <input type="hidden" name="to_email" value="Vahoberkaci@gmail.com" />
-                <input type="hidden" name="reply_to" value={formState.email} />
-
-                <button 
+                <input type="hidden" name="_cc" value="Vahoberkaci@gmail.com" />                <button 
                   type="submit" 
                   disabled={formStatus === 'submitting'}
                   className="btn-primary w-full py-3 flex items-center justify-center"
@@ -284,6 +279,9 @@ const ContactPage = () => {
                     t('contact.form.submit')
                   )}
                 </button>
+                
+                {/* honeypot to prevent spam */}
+                <input type="text" name="_honey" style={{display: 'none'}} />
               </form>
             </div>
 
