@@ -1,12 +1,11 @@
 {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
-  "name": "VikAno Furniture",
-  "description": "Premium handmade furniture and custom cottage building services in Georgia. Quality craftsmanship for your home and living spaces.",
-  "url": "https://vikano.com",
-  "logo": "https://vikano.com/logo192.png",
-  "image": "https://vikano.com/logo192.png",
-  "telephone": "+995-XXX-XXX-XXX",
+  "name": "VikAno Furniture | ვიკანო ავეჯი",
+  "description": "Premium handmade furniture and custom cottage building services in Georgia. Quality craftsmanship for your home and living spaces. | პრემიუმ ხელნაკეთი ავეჯი და კოტეჯების მშენებლობა საქართველოში.",  "url": "https://vikano.ge",
+  "logo": "https://vikano.ge/logo192.png",
+  "image": "https://vikano.ge/logo192.png",
+  "telephone": "+995 598 31 45 22",
   "email": "VikanoBiz@gmail.com",
   "address": {
     "@type": "PostalAddress",
@@ -25,33 +24,31 @@
   "priceRange": "$$-$$$",
   "sameAs": [
     "https://www.facebook.com/profile.php?id=61576251717958"
-  ],
-  "hasOfferCatalog": {
+  ],  "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Furniture Services",
+    "name": "Furniture Services | ავეჯის სერვისები",
     "itemListElement": [
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Custom Furniture Design",
-          "description": "Bespoke furniture design service tailored to your needs"
+          "name": "Custom Furniture Design | ინდივიდუალური ავეჯის დიზაინი",
+          "description": "Bespoke furniture design service tailored to your needs | თქვენს მოთხოვნებზე მორგებული ავეჯის დიზაინი"
+        }
+      },      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Cottage Construction | კოტეჯების მშენებლობა",
+          "description": "Custom cottage design and construction | კოტეჯების ინდივიდუალური დიზაინი და მშენებლობა"
         }
       },
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Cottage Construction",
-          "description": "Custom cottage design and construction"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Interior Design",
-          "description": "Complete interior design services"
+          "name": "Interior Design | ინტერიერის დიზაინი",
+          "description": "Complete interior design services | სრული ინტერიერის დიზაინის სერვისები"
         }
       }
     ]

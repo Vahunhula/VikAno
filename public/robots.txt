@@ -2,4 +2,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://vikano.com/sitemap.xml
+Sitemap: https://vikano.ge/sitemap.xml

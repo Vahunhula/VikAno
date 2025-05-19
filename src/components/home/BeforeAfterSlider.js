@@ -184,12 +184,12 @@ const BeforeAfterSlider = () => {
   }, [isDragging]);
 
   return (
-    <div className="py-20 bg-gray-50">
+    <div className="py-20 bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="container-custom">
-        <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-center text-accent">
+        <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-center text-accent dark:text-secondary transition-colors duration-300">
           {t('beforeAfter.title')}
         </h2>
-        <p className="text-gray-600 max-w-2xl mx-auto text-center mb-12">
+        <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-center mb-12 transition-colors duration-300">
           {t('beforeAfter.subtitle')}
         </p>
 
@@ -235,7 +235,7 @@ const BeforeAfterSlider = () => {
           {/* Slider control */}
           <div 
             ref={sliderRef}
-            className="absolute top-0 bottom-0 w-1 bg-white cursor-col-resize"
+            className="absolute top-0 bottom-0 w-1 bg-white dark:bg-gray-200 cursor-col-resize transition-colors duration-300"
             style={{ 
               left: `${sliderPosition}%`, 
               transform: 'translateX(-50%)',
@@ -245,18 +245,18 @@ const BeforeAfterSlider = () => {
             }}
           >
             <div 
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg"
+              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-gray-200 rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
               style={{ pointerEvents: 'auto' }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-primary dark:text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
               </svg>
             </div>
           </div>
         </div>
         
-        <p className="text-center text-gray-500 mt-4">
-          {t('beforeAfter.dragInstructions', 'Drag the slider or hover to see the transformation')}
+        <p className="text-center text-gray-500 dark:text-gray-400 mt-4 transition-colors duration-300">
+          {t('beforeAfter.dragInstructions')}
         </p>
       </div>
     </div>

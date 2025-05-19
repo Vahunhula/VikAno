@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://vikano.com/</loc>
+    <loc>https://vikano.ge/</loc>
     <lastmod>2025-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://vikano.com/gallery</loc>
+    <loc>https://vikano.ge/gallery</loc>
     <lastmod>2025-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vikano.com/calculator</loc>
+  </url>  <url>
+    <loc>https://vikano.ge/calculator</loc>
     <lastmod>2025-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://vikano.com/about</loc>
+    <loc>https://vikano.ge/about</loc>
     <lastmod>2025-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://vikano.com/contact</loc>
+    <loc>https://vikano.ge/contact</loc>
     <lastmod>2025-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

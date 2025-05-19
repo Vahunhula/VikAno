@@ -82,11 +82,10 @@ const FeaturedCollection = () => {
   }, []);
   return (
     <section ref={sectionRef} className="py-20 bg-gray-50 dark:bg-gray-800">
-      <div className="container-custom">
-        <div className="text-center mb-12" ref={titleRef}>
+      <div className="container-custom">        <div className="text-center mb-12" ref={titleRef}>
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4 text-accent dark:text-secondary">{t('featured.title')}</h2>
-          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Discover our most popular handcrafted furniture pieces, made with attention to detail and quality materials
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
+            {t('featured.description')}
           </p>
         </div>
         
