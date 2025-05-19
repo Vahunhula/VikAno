@@ -26,14 +26,26 @@ const Footer = () => {
               <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
             </ul>
           </div>
-          
-          <div>
+            <div>
             <h3 className="text-xl font-serif mb-4">Contact Us</h3>
             <address className="not-italic text-gray-300 space-y-2">
-              <p>123 Furniture Lane</p>
-              <p>Woodwork City, WC 12345</p>
-              <p>Phone: (123) 456-7890</p>
-              <p>Email: info@vikano.com</p>
+              <p>Tbilisi, Georgia</p>
+              <p>Phone: +995598314522</p>
+              <p>Email: {t('contact.info.email')}</p>              <p>
+                <a 
+                  href="https://www.facebook.com/profile.php?id=61576251717958" 
+                  className="inline-flex items-center text-gray-300 hover:text-white transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="bg-blue-600 hover:bg-blue-700 p-2 rounded-full text-white mr-2 flex items-center justify-center" style={{width: '28px', height: '28px'}}>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                    </svg>
+                  </span>
+                  <span>Find us on Facebook</span>
+                </a>
+              </p>
             </address>
           </div>
         </div>

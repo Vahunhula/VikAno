@@ -1,0 +1,59 @@
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "VikAno Furniture",
+  "description": "Premium handmade furniture and custom cottage building services in Georgia. Quality craftsmanship for your home and living spaces.",
+  "url": "https://vikano.com",
+  "logo": "https://vikano.com/logo192.png",
+  "image": "https://vikano.com/logo192.png",
+  "telephone": "+995-XXX-XXX-XXX",
+  "email": "VikanoBiz@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Tbilisi",
+    "addressLocality": "Tbilisi",
+    "addressRegion": "Tbilisi",
+    "postalCode": "0XXX",
+    "addressCountry": "GE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "41.71736487923514",
+    "longitude": "44.78267491542878"
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "$$-$$$",
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61576251717958"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Furniture Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Custom Furniture Design",
+          "description": "Bespoke furniture design service tailored to your needs"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Cottage Construction",
+          "description": "Custom cottage design and construction"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Interior Design",
+          "description": "Complete interior design services"
+        }
+      }
+    ]
+  }
+}

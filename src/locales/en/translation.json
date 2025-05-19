@@ -144,11 +144,10 @@
   },  "contact": {
     "title": "Contact Us",
     "description": "Have questions or ready to transform your space? Reach out to us today.",
-    "callToAction": "Get in touch with our team",
-    "info": {
-      "address": "123 Furniture Lane, Woodwork City, WC 12345",
-      "phone": "598314522",
-      "email": "Vahoberkaci@gmail.com",
+    "callToAction": "Get in touch with our team",    "info": {
+      "address": "Tbilisi, Georgia",
+      "phone": "995598314522",
+      "email": "VikanoBiz@gmail.com",
       "hours": "Monday - Friday: 9am - 6pm | Saturday: 10am - 4pm"
     },
     "form": {

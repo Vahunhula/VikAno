@@ -71,10 +71,31 @@ function AppContent() {
   const location = useLocation();
   const { t } = useTranslation();
   
-  // Update the document title when language changes
+  // Update the document title when language changes or location changes
   useEffect(() => {
-    document.title = t('app.title');
-  }, [t]);
+    const path = location.pathname;
+    
+    // Set different titles based on current route
+    switch(path) {
+      case '/':
+        document.title = t('app.title') + ' | ' + t('home.title');
+        break;
+      case '/gallery':
+        document.title = t('app.title') + ' | ' + t('gallery.title');
+        break;
+      case '/calculator':
+        document.title = t('app.title') + ' | ' + t('calculator.title');
+        break;
+      case '/about':
+        document.title = t('app.title') + ' | ' + t('about.title');
+        break;
+      case '/contact':
+        document.title = t('app.title') + ' | ' + t('contact.title');
+        break;
+      default:
+        document.title = t('app.title');
+    }
+  }, [t, location.pathname]);
   
   return (
     <Layout>

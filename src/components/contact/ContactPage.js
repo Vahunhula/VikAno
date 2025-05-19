@@ -262,10 +262,9 @@ const ContactPage = () => {
                     onChange={(e) => setFormState({...formState, message: e.target.value})}
                     required
                     rows="5"
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-secondary bg-white dark:bg-gray-700 text-gray-800 dark:text-white"
-                  ></textarea>
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-secondary bg-white dark:bg-gray-700 text-gray-800 dark:text-white"                  ></textarea>
                 </div>
-                <input type="hidden" name="_cc" value="Vahoberkaci@gmail.com" />                <button 
+                <input type="hidden" name="_cc" value="VikanoBiz@gmail.com" />                <button 
                   type="submit" 
                   disabled={formStatus === 'submitting'}
                   className="btn-primary w-full py-3 flex items-center justify-center"
@@ -314,9 +313,8 @@ const ContactPage = () => {
                       </svg>
                     </div>
                     <div>
-                      <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-1">{t('contact.callUs')}</h4>
-                      <a 
-                        href={`tel:${t('contact.info.phone')}`} 
+                      <h4 className="font-bold text-gray-800 dark:text-gray-200 mb-1">{t('contact.callUs')}</h4>                      <a 
+                        href={`tel:+${t('contact.info.phone')}`} 
                         className="text-primary dark:text-secondary hover:underline"
                         onClick={handlePhoneClick}
                       >
@@ -349,12 +347,12 @@ const ContactPage = () => {
               <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8">
                 <h3 className="text-xl font-serif font-bold mb-4 text-gray-800 dark:text-gray-200">
                   Connect With Us
-                </h3>
-                <div className="flex space-x-4">
-                  <a 
-                    href="#" 
+                </h3>                <div className="flex space-x-4">                  <a 
+                    href="https://www.facebook.com/profile.php?id=61576251717958" 
                     className="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition-colors duration-300"
                     aria-label="Facebook"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
