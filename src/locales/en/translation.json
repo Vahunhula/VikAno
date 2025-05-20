@@ -19,11 +19,13 @@
     "title": "Custom Crafted Furniture",
     "subtitle": "Handmade with passion and precision",
     "cta": "Explore Our Collection"
-  },
-  "featured": {
+  },  "featured": {
     "title": "Featured Collection",
     "description": "Discover our most popular handcrafted furniture pieces, made with attention to detail and quality materials",
     "viewItem": "View Item",
+    "close": "Close",
+    "details": "Item Details",
+    "materials": "Materials Used",
     "items": {
       "kitchen": {
         "title": "Modern Kitchen Design",
