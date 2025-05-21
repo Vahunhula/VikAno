@@ -151,9 +151,8 @@ const GalleryHero = () => {
         >
           {t('gallery.title', 'Our Furniture Gallery')}
         </motion.h1>
-        
-        <motion.div
-          className="overflow-hidden h-12 mb-6"
+          <motion.div
+          className="overflow-hidden h-16 mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.7 }}

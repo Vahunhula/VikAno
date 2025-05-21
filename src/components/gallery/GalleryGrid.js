@@ -20,7 +20,7 @@ import newBrownBedroomImage from '../../assets/images/NewBigBrownBedroom.jpg';
 gsap.registerPlugin(ScrollTrigger);
 
 // Gallery data
-const galleryItems = [
+export const galleryItems = [
   {
     id: 1,
     title: 'Modern Kitchen Design',
@@ -207,9 +207,8 @@ const GalleryGrid = () => {
                 </h3>
                 <p className="text-white/90 dark:text-gray-900/90 mb-4">
                   {item.description}
-                </p>
-                <span className="px-4 py-2 bg-white dark:bg-gray-900 text-primary dark:text-secondary rounded-full text-sm font-medium">
-                  View Details
+                </p>                <span className="px-4 py-2 bg-white dark:bg-gray-900 text-primary dark:text-secondary rounded-full text-sm font-medium">
+                  {t('gallery.viewDetails', 'View Details')}
                 </span>
               </div>
             </div>
@@ -217,9 +216,8 @@ const GalleryGrid = () => {
         </div>
         
         {filteredItems.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-xl text-gray-600 dark:text-gray-300">
-              No items found in this category. Please try another filter.
+          <div className="text-center py-20">            <p className="text-xl text-gray-600 dark:text-gray-300">
+              {t('gallery.noItems', 'No items found in this category. Please try another filter.')}
             </p>
           </div>
         )}

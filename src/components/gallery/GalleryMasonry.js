@@ -95,9 +95,8 @@ const GalleryMasonry = () => {
                   className="text-white font-bold text-xl mb-2"
                   initial={{ y: 20, opacity: 0 }}
                   whileHover={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                >
-                  Executive Walk-in Closet
+                  transition={{ duration: 0.3, delay: 0.1 }}                >
+                  {t('gallery.masonry.executiveCloset', 'Executive Walk-in Closet')}
                 </motion.h3>
                 <motion.div 
                   className="h-0.5 w-16 bg-primary dark:bg-secondary mb-3"
@@ -109,9 +108,8 @@ const GalleryMasonry = () => {
                   className="text-gray-200 text-sm"
                   initial={{ y: 20, opacity: 0 }}
                   whileHover={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.3 }}
-                >
-                  Premium custom solution with central island
+                  transition={{ duration: 0.3, delay: 0.3 }}                >
+                  {t('gallery.masonry.premiumSolution', 'Premium custom solution with central island')}
                 </motion.p>
               </motion.div>
             </div>
@@ -152,17 +150,15 @@ const GalleryMasonry = () => {
                   className="text-white font-bold text-xl"
                   initial={{ y: 20, opacity: 0 }}
                   whileHover={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  Minimalist Closet Design
+                  transition={{ duration: 0.3 }}                >
+                  {t('gallery.masonry.minimalistCloset', 'Minimalist Closet Design')}
                 </motion.h3>
                 <motion.p 
                   className="text-gray-200 text-sm mt-2"
                   initial={{ y: 20, opacity: 0 }}
                   whileHover={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                >
-                  Clean lines with optimal storage capacity
+                  transition={{ duration: 0.3, delay: 0.1 }}                >
+                  {t('gallery.masonry.cleanLines', 'Clean lines with optimal storage capacity')}
                 </motion.p>
               </motion.div>
             </div>
@@ -221,17 +217,15 @@ const GalleryMasonry = () => {
                   className="text-white font-bold text-xl"
                   initial={{ y: 20, opacity: 0 }}
                   whileHover={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  Modern Illuminated Closet
+                  transition={{ duration: 0.3 }}                >
+                  {t('gallery.masonry.modernIlluminated', 'Modern Illuminated Closet')}
                 </motion.h3>
                 <motion.p 
                   className="text-gray-200 text-sm mt-2"
                   initial={{ y: 20, opacity: 0 }}
                   whileHover={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                >
-                  Integrated lighting highlights each section
+                  transition={{ duration: 0.3, delay: 0.1 }}                >
+                  {t('gallery.masonry.integratedLighting', 'Integrated lighting highlights each section')}
                 </motion.p>
               </motion.div>
             </div>

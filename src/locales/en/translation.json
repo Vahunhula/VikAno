@@ -131,9 +131,10 @@
     "title": "VikAno Furniture - Custom Furniture in Tbilisi, Georgia",
     "description": "VikAno Furniture offers premium custom-made furniture, kitchens, closets, and cottage solutions in Tbilisi, Georgia. Handcrafted with quality materials and professional installation.",
     "keywords": "custom furniture, wooden furniture, handmade furniture, kitchen cabinetry, closets, wardrobes, bedroom furniture, interior design, Tbilisi, Georgia, premium furniture, custom cabinets"
-  },"gallery": {
+  },  "gallery": {
     "title": "Our Furniture Gallery",
-    "description": "This page will showcase all of our handcrafted furniture pieces.",
+    "description": "Explore our collection of handcrafted furniture pieces made with precision and passion",
+    "subheader": "Premium Furniture",
     "filter": {
       "title": "Filter Collection",
       "description": "Explore our designs by category or view our complete collection"
@@ -146,7 +147,43 @@
       "closet": "Closet",
       "bathroom": "Bathroom"
     },
-    "featured": "New"
+    "featured": "New",
+    "hero": {
+      "bedroom": "Bedroom Collections",
+      "kitchen": "Kitchen Designs",
+      "closet": "Custom Closets"
+    },
+    "spotlight": {
+      "title": "Project Spotlight",
+      "description": "See the dramatic transformation in this recent project",
+      "badge": "Featured Project",
+      "projectTitle": "Living Room Renovation",
+      "projectDescription": "This complete living room transformation included custom built-in shelving, a new entertainment center, and a refreshed color palette. Our client wanted a space that felt both elegant and comfortable for everyday living.",
+      "timeframe": "Timeframe",
+      "weeks": "weeks",
+      "location": "Location",
+      "cityName": "Tbilisi",
+      "satisfaction": "Satisfaction",
+      "cta": "Start Your Transformation",
+      "share": "Share:"
+    },    "special": {
+      "title": "Designer Spotlight",
+      "description": "Exclusive custom closet designs featuring our most innovative solutions",
+      "card": {
+        "title": "Custom Solutions",
+        "description": "Our custom closet solutions are designed to maximize space while providing elegant organization for your wardrobe. Each closet is tailored to your specific needs and style preferences.",
+        "cta": "Request a Design"
+      }
+    },
+    "noItems": "No items found in this category. Please try another filter.",
+    "viewDetails": "View Details",
+    "masonry": {
+      "executiveCloset": "Executive Walk-in Closet",
+      "premiumSolution": "Premium custom solution with central island",      "minimalistCloset": "Minimalist Closet Design",
+      "cleanLines": "Clean lines with optimal storage capacity",
+      "modernIlluminated": "Modern Illuminated Closet",
+      "integratedLighting": "Integrated lighting highlights each section"
+    }
   },"about": {
     "title": "About VikAno",
     "description": "Our company specializes in the custom manufacturing of furniture, cottages, and kitchen interiors.",
