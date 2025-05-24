@@ -80,19 +80,16 @@ const GalleryHero = () => {
       className="h-[70vh] relative flex items-center justify-center overflow-hidden"
     >
       {/* Animated background slideshow */}
-      {heroImages.map((heroImage, index) => (
-        <motion.div
+      {heroImages.map((heroImage, index) => (        <motion.div
           key={index}
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImage.image})` }}
           initial={{ opacity: 0 }}
           animate={{ 
-            opacity: activeSlide === index ? 1 : 0,
-            scale: activeSlide === index ? 1 : 1.1
+            opacity: activeSlide === index ? 1 : 0
           }}
           transition={{ 
-            opacity: { duration: 1.2 },
-            scale: { duration: 8 }
+            opacity: { duration: 1.2 }
           }}
         />
       ))}
@@ -111,23 +108,19 @@ const GalleryHero = () => {
       />
       
       {/* Decorative animated elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div          className="absolute top-[10%] left-[15%] w-24 h-24 rounded-full border-2 border-primary/30 dark:border-secondary/30"
+      <div className="absolute inset-0 overflow-hidden">        <motion.div          className="absolute top-[10%] left-[15%] w-24 h-24 rounded-full border-2 border-primary/30 dark:border-secondary/30"
           animate={{ 
-            scale: 1.2,
             opacity: 0.5,
             rotate: 360
           }}
-          initial={{ scale: 1, opacity: 0.3, rotate: 0 }}
+          initial={{ opacity: 0.3, rotate: 0 }}
           transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-        />
-        <motion.div          className="absolute top-[60%] right-[10%] w-40 h-40 rounded-full border border-primary/20 dark:border-secondary/20"
+        />        <motion.div          className="absolute top-[60%] right-[10%] w-40 h-40 rounded-full border border-primary/20 dark:border-secondary/20"
           animate={{ 
-            scale: 1.3,
             opacity: 0.4,
             rotate: -360
           }}
-          initial={{ scale: 1, opacity: 0.2, rotate: 0 }}
+          initial={{ opacity: 0.2, rotate: 0 }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
         />
       </div>

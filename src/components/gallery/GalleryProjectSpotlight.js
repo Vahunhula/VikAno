@@ -160,10 +160,7 @@ const GalleryProjectSpotlight = () => {
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               <div className="absolute inset-y-0 w-0.5 bg-white/80"></div>              <motion.div 
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center slider-handle-glow"                animate={{
-                  scale: [1, 1.1]
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-md rounded-full shadow-lg flex items-center justify-center slider-handle-glow"
               >
                 <svg className="w-6 h-6 text-gray-800" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
@@ -288,25 +285,19 @@ const GalleryProjectSpotlight = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
                 viewport={{ once: true }}
-              >
-                <motion.a 
+              >                <motion.a 
                   href="/contact" 
                   className="inline-block bg-primary dark:bg-secondary text-white dark:text-gray-900 px-8 py-3 rounded-md hover:bg-primary/90 dark:hover:bg-secondary/90 transition-colors"
-                  whileHover={{ scale: 1.05, boxShadow: "0 10px 25px rgba(0,0,0,0.1)" }}
-                  whileTap={{ scale: 0.98 }}
                 >
                   {t('gallery.spotlight.cta', 'Start Your Transformation')}
                 </motion.a>
                 
                 <div className="flex items-center gap-2">
                   <span className="text-gray-500 dark:text-gray-400">{t('gallery.spotlight.share', 'Share:')}</span>
-                  {['facebook', 'twitter', 'instagram'].map((platform, i) => (
-                    <motion.a
+                  {['facebook', 'twitter', 'instagram'].map((platform, i) => (                    <motion.a
                       key={platform}
                       href={`#${platform}`}
                       className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600"
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      whileTap={{ scale: 0.9 }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.8 + (i * 0.1) }}

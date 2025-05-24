@@ -71,8 +71,7 @@ const FilterCategories = () => {
         >
           {categories.map((category, index) => (
             <motion.button 
-              key={category.id}
-              onClick={() => handleCategoryClick(category.id)}
+              key={category.id}              onClick={() => handleCategoryClick(category.id)}
               onMouseEnter={() => setIsHovered(category.id)}
               onMouseLeave={() => setIsHovered(null)}
               className={`relative flex flex-col items-center px-5 py-3 rounded-lg transition-all duration-300 ${
@@ -80,27 +79,16 @@ const FilterCategories = () => {
                   ? 'bg-primary/10 dark:bg-secondary/20 shadow-md' 
                   : 'hover:bg-gray-100 dark:hover:bg-gray-700'
               }`}
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <motion.div 
+            >              <motion.div 
                 className={`w-10 h-10 mb-2 flex items-center justify-center rounded-full ${
                   activeCategory === category.id 
                     ? 'bg-primary dark:bg-secondary text-white dark:text-gray-900' 
                     : 'bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-200'
                 }`}
-                initial={false}                animate={activeCategory === category.id ? { 
-                  scale: 1.2, 
-                  backgroundColor: activeCategory === category.id ? '#ff6b6b' : '#e2e8f0'
-                } : { scale: 1 }}
-                transition={{ 
-                  duration: 0.4,
-                  repeatType: "reverse",
-                  repeat: activeCategory === category.id ? 1 : 0
-                }}
+                initial={false}
               >
                 <svg 
                   className="w-5 h-5" 
@@ -131,12 +119,11 @@ const FilterCategories = () => {
                 />
               )}              {/* Display actual item count on hover */}
               {isHovered === category.id && (
-                <AnimatePresence>
-                  <motion.span 
+                <AnimatePresence>                  <motion.span 
                     className="absolute -top-2 -right-2 w-6 h-6 flex items-center justify-center bg-primary dark:bg-secondary text-white dark:text-gray-900 text-xs font-bold rounded-full"
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                   >
                     {categoryCounts[category.id] || 0}

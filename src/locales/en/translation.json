@@ -176,13 +176,50 @@
       }
     },
     "noItems": "No items found in this category. Please try another filter.",
-    "viewDetails": "View Details",
-    "masonry": {
+    "viewDetails": "View Details",    "masonry": {
       "executiveCloset": "Executive Walk-in Closet",
       "premiumSolution": "Premium custom solution with central island",      "minimalistCloset": "Minimalist Closet Design",
       "cleanLines": "Clean lines with optimal storage capacity",
       "modernIlluminated": "Modern Illuminated Closet",
       "integratedLighting": "Integrated lighting highlights each section"
+    },
+    "items": {
+      "1": {
+        "title": "Modern Kitchen Design",
+        "description": "Custom cabinetry with premium hardwood and elegant details"
+      },
+      "2": {
+        "title": "Luxury Closet Solution",
+        "description": "Tailored storage system with integrated lighting"
+      },
+      "3": {
+        "title": "Master Bedroom Suite",
+        "description": "Complete bedroom furniture set with custom headboard"
+      },
+      "4": {
+        "title": "Contemporary Bedroom",
+        "description": "Modern bedroom design with clean lines"
+      },
+      "5": {
+        "title": "Luxury Bathroom",
+        "description": "Custom bathroom cabinetry and vanity"
+      },
+      "6": {
+        "title": "Walk-in Closet Design",
+        "description": "Premium walk-in closet with specialized compartments"
+      },
+      "7": {
+        "title": "Elegant Brown Bedroom",
+        "description": "Luxurious bedroom with rich brown tones and custom woodwork"
+      },
+      "8": {
+        "title": "Modern Cottage Exterior",
+        "description": "Contemporary cottage design with natural wood elements"
+      },
+      "9": {
+        "title": "Cottage Garden View",
+        "description": "Charming cottage with landscaped surroundings and patio"
+      }
     }
   },"about": {
     "title": "About VikAno",

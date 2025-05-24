@@ -69,16 +69,14 @@ const GalleryMasonry = () => {
             {t('gallery.special.description', 'Exclusive custom closet designs featuring our most innovative solutions')}
           </p>
         </div>        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {/* Large image spanning two rows with parallax effect */}
-          <motion.div 
+          {/* Large image spanning two rows with parallax effect */}          <motion.div 
             className="lg:row-span-2 overflow-hidden rounded-lg shadow-lg"
             ref={el => imageRefs.current[0] = el}
-            whileHover={{ scale: 1.03, transition: { duration: 0.5 } }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative h-full zoom-effect glow-on-hover">
+            <div className="relative h-full">
               <img 
                 src={evenBiggerClosetImage} 
                 alt="Large custom closet with island"
@@ -114,18 +112,15 @@ const GalleryMasonry = () => {
               </motion.div>
             </div>
           </motion.div>
-          
-          {/* Interactive image with hover effects */}
+            {/* Interactive image with hover effects */}
           <motion.div 
             className="overflow-hidden rounded-lg shadow-lg"
             ref={el => imageRefs.current[1] = el}
-            whileHover={{ scale: 1.05, y: -5, transition: { duration: 0.4 } }}
-            whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="relative zoom-effect">
+            <div className="relative">
               <img 
                 src={closetImageWithoutMirrors} 
                 alt="Simple elegant closet design"
@@ -164,11 +159,9 @@ const GalleryMasonry = () => {
             </div>
           </motion.div>
           
-          {/* Image with interactive floating elements */}
-          <motion.div 
+          {/* Image with interactive floating elements */}          <motion.div 
             className="overflow-hidden rounded-lg shadow-lg"
             ref={el => imageRefs.current[2] = el}
-            whileHover={{ scale: 1.05, rotate: 1, transition: { duration: 0.4 } }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -181,9 +174,8 @@ const GalleryMasonry = () => {
                 loading="lazy"
               />              <motion.div 
                 className="absolute top-4 left-4 w-6 h-6 rounded-full bg-primary dark:bg-secondary opacity-80"
-                initial={{ scale: 1, opacity: 0.7 }}
+                initial={{ opacity: 0.7 }}
                 animate={{ 
-                  scale: 1.5,
                   opacity: 0.4,
                 }}
                 transition={{ 
@@ -194,9 +186,8 @@ const GalleryMasonry = () => {
                 }}
               />              <motion.div 
                 className="absolute bottom-16 right-8 w-4 h-4 rounded-full bg-primary dark:bg-secondary opacity-80"
-                initial={{ scale: 1, opacity: 0.7 }}
+                initial={{ opacity: 0.7 }}
                 animate={{ 
-                  scale: 1.5,
                   opacity: 0.4,
                 }}
                 transition={{ 
@@ -251,12 +242,9 @@ const GalleryMasonry = () => {
               <div className="w-16 h-1 bg-primary dark:bg-secondary mb-6"></div>
               <p className="text-gray-700 dark:text-gray-300 mb-6">
                 {t('gallery.special.card.description', 'Our custom closet solutions are designed to maximize space while providing elegant organization for your wardrobe. Each closet is tailored to your specific needs and style preferences.')}
-              </p>
-              <motion.a 
+              </p>              <motion.a 
                 href="/contact" 
                 className="inline-block bg-primary dark:bg-secondary text-white dark:text-gray-900 px-6 py-2 rounded-md hover:bg-primary/90 dark:hover:bg-secondary/90 transition-colors mt-auto self-start"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
               >
                 {t('gallery.special.card.cta', 'Request a Design')}
               </motion.a>
