@@ -51,33 +51,56 @@ const FeaturedCollection = () => {
     
     // Prevent body scrolling while modal is open
     document.body.style.overflow = 'hidden';
-  };
-    const closePopup = () => {
+  };    const closePopup = () => {
     if (showPopup) {
-      gsap.to(popupRef.current, {
-        opacity: 0,
-        y: 20,
-        scale: 0.95,
-        duration: 0.2,
-        ease: 'power2.in',
-        onComplete: () => {
-          setShowPopup(false);
-          setSelectedItem(null);
-          
-          // Restore scrolling
-          document.body.style.overflow = '';
-          
-          // Restore scroll position
-          window.scrollTo({
-            top: scrollPosition,
-            behavior: 'auto'
-          });
-        }
-      });
+      // Detect iOS device
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      
+      // Use simpler animation for iOS
+      if (isIOS) {
+        gsap.to(popupRef.current, {
+          opacity: 0,
+          duration: 0.15,
+          ease: 'power1.in',
+          onComplete: () => {
+            setShowPopup(false);
+            setSelectedItem(null);
+            
+            // Restore scrolling
+            document.body.style.overflow = '';
+            
+            // Restore scroll position on non-iOS devices
+            window.scrollTo({
+              top: scrollPosition,
+              behavior: 'auto'
+            });
+          }
+        });
+      } else {
+        gsap.to(popupRef.current, {
+          opacity: 0,
+          y: 20,
+          scale: 0.95,
+          duration: 0.2,
+          ease: 'power2.in',
+          onComplete: () => {
+            setShowPopup(false);
+            setSelectedItem(null);
+            
+            // Restore scrolling
+            document.body.style.overflow = '';
+            
+            // Restore scroll position
+            window.scrollTo({
+              top: scrollPosition,
+              behavior: 'auto'
+            });
+          }
+        });
+      }
     }
   };
-  
-  // Handle popup keyboard interactions and animations
+    // Handle popup keyboard interactions and animations
   useEffect(() => {
     const handleEscKey = (event) => {
       if (event.key === 'Escape') {
@@ -87,21 +110,40 @@ const FeaturedCollection = () => {
 
     if (showPopup) {
       closeButtonRef.current?.focus();
-      gsap.fromTo(
-        popupRef.current,
-        { 
-          opacity: 0,
-          y: 20,
-          scale: 0.95
-        },
-        { 
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.3,
-          ease: 'power2.out'
-        }
-      );
+      
+      // Detect iOS device
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      
+      // Use simpler animation for iOS to improve performance
+      if (isIOS) {
+        gsap.fromTo(
+          popupRef.current,
+          { 
+            opacity: 0
+          },
+          { 
+            opacity: 1,
+            duration: 0.2,
+            ease: 'power1.out'
+          }
+        );
+      } else {
+        gsap.fromTo(
+          popupRef.current,
+          { 
+            opacity: 0,
+            y: 20,
+            scale: 0.95
+          },
+          { 
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.3,
+            ease: 'power2.out'
+          }
+        );
+      }
       
       window.addEventListener('keydown', handleEscKey);
     }
@@ -198,9 +240,8 @@ const FeaturedCollection = () => {
               </div>
             </div>
           ))}
-        </div>            {/* Popup Modal */}
-        {showPopup && selectedItem && (          <div 
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 overflow-y-auto"
+        </div>            {/* Popup Modal */}        {showPopup && selectedItem && (          <div 
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 overflow-y-auto overflow-x-hidden"
             onClick={(e) => {
               if (e.target === e.currentTarget) {
                 closePopup();
@@ -209,10 +250,12 @@ const FeaturedCollection = () => {
             role="dialog"
             aria-modal="true"
             aria-labelledby="dialog-title"
-          >            <div className="min-h-screen px-4 flex items-start justify-center pt-5 pb-20">
+            style={{ WebkitOverflowScrolling: 'touch' }} /* Improve iOS scrolling */
+          >            <div className="min-h-screen px-4 flex items-center justify-center py-6 sm:py-8">
               <div 
                 ref={popupRef}
-                className="relative bg-white dark:bg-gray-800 rounded-lg w-full max-w-4xl shadow-2xl overflow-hidden transition-colors duration-300 flex flex-col md:flex-row"
+                className="relative bg-white dark:bg-gray-800 rounded-lg w-full max-w-3xl mx-auto shadow-2xl overflow-hidden transition-colors duration-300 flex flex-col md:flex-row"
+                style={{ maxHeight: 'calc(100vh - 40px)' }} /* Prevent modal from extending beyond viewport */
               >
                 {/* Close button */}
                 <button
@@ -224,13 +267,12 @@ const FeaturedCollection = () => {
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
-                </button>
-
-                {/* Image Section - Left Side */}                <div className="relative md:w-2/5 h-56 md:h-auto">
+                </button>                {/* Image Section - Left Side */}                <div className="relative md:w-2/5 h-56 md:h-auto">
                   <img 
                     src={selectedItem.imageUrl}
                     alt={t(`featured.items.${selectedItem.key}.title`)}
                     className="w-full h-full object-cover md:h-full md:rounded-l-lg"
+                    style={{ maxHeight: '350px' }} /* Control image height on mobile */
                   />
                   <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 to-transparent md:rounded-l-lg"></div>
                   <h3 
@@ -239,10 +281,8 @@ const FeaturedCollection = () => {
                   >
                     {t(`featured.items.${selectedItem.key}.title`)}
                   </h3>
-                </div>
-
-                {/* Content Section - Right Side */}
-                <div className="p-6 md:p-8 space-y-4 md:w-3/5">                  <div className="flex items-center justify-between mb-6">
+                </div>                {/* Content Section - Right Side */}
+                <div className="p-6 md:p-8 space-y-4 md:w-3/5 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 40px)', WebkitOverflowScrolling: 'touch' }}><div className="flex items-center justify-between mb-6">
                     <div className="text-gray-600 dark:text-gray-300">
                       <span className="font-semibold">{t('calculator.size')}:</span> {selectedItem.size}
                     </div>
