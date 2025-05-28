@@ -10,45 +10,24 @@ import bedroomImage from '../../assets/images/AnotherBedroom.jpg';
 gsap.registerPlugin(ScrollTrigger);
 
 // Furniture data with local images (IDs match translation keys)
-const featuredItems = [
-  {
+const featuredItems = [  {
     id: 1,
     key: 'kitchen',
     imageUrl: kitchenImage,
-    size: '25 მ²',
-    price: '21,500',
-    materials: [
-      'აუსტრიული მუხის მასალა',
-      'იტალიური ფურნიტურა',
-      'გერმანული კარკასი',
-      'LED განათება'
-    ]
-  },
-  {
+    size: '12 მ²',
+    price: '6,500'
+  },  {
     id: 2,
     key: 'closet',
     imageUrl: closetImage,
-    size: '12 მ²',
-    price: '15,200',
-    materials: [
-      'იტალიური MDF',
-      'გერმანული სარკეები',
-      'ავსტრიული მექანიზმები',
-      'სენსორული განათება'
-    ]
-  },
-  {
+    size: '300×260 სმ',
+    price: '2,000'
+  },{
     id: 3,
     key: 'bedroom',
     imageUrl: bedroomImage,
-    size: '18 მ²',
-    price: '17,800',
-    materials: [
-      'ავსტრიული მუხის მასალა',
-      'იტალიური ტყავი',
-      'გერმანული ფურნიტურა',
-      'LED განათება'
-    ]
+    size: '200×180 სმ',
+    price: '1,300'
   }
 ];
 
@@ -271,14 +250,12 @@ const FeaturedCollection = () => {
                       <span className="font-normal text-base mr-1">₾</span>
                       {selectedItem.price}
                     </div>
-                  </div>
-
-                  <div className="mb-6">
+                  </div>                  <div className="mb-6">
                     <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
                       {t('featured.materials')}:
                     </h4>
                     <ul className="grid gap-2 text-gray-600 dark:text-gray-300">
-                      {selectedItem.materials.map((material, index) => (
+                      {t(`featured.items.${selectedItem.key}.materials`, { returnObjects: true }).map((material, index) => (
                         <li key={index} className="flex items-center">
                           <svg className="h-5 w-5 text-primary dark:text-secondary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />

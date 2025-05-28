@@ -25,19 +25,37 @@
     "viewItem": "View Item",
     "close": "Close",
     "details": "Item Details",
-    "materials": "Materials Used",
-    "items": {
-      "kitchen": {
+    "materials": "Materials Used",    "items": {      "kitchen": {
         "title": "Modern Kitchen Design",
-        "description": "Custom cabinetry with premium hardwood and elegant details"
+        "description": "Efficient 12 square meter kitchen crafted with Austrian laminate featuring premium hardware and European standard framework with LED lighting system",
+        "materials": [
+          "Austrian Laminate",
+          "Premium Hardware",
+          "European Standard Framework",
+          "LED Lighting System"
+        ]
       },
       "closet": {
-        "title": "Luxury Closet Solution",
-        "description": "Tailored storage system with integrated lighting and hardware"
+        "title": "Premium Turkish Wardrobe",
+        "description": "300×260 cm custom wardrobe made with high-quality Turkish MDF featuring automatic LED lighting, soft-close system, and modern wood texture",
+        "materials": [
+          "High-Quality Turkish MDF",
+          "Automatic LED Lighting",
+          "Soft-Close System",
+          "Modern Wood Texture",
+          "Reinforced Construction"
+        ]
       },
       "bedroom": {
-        "title": "Bedroom Ensemble",
-        "description": "Complete bedroom furniture set with matching finishes"
+        "title": "Upholstered Bed with Headboard",
+        "description": "200×180 cm bed with upholstered headboard made with high-quality Turkish fabric, orthopedic mattress, and anti-allergic filling",
+        "materials": [
+          "Upholstered Headboard",
+          "High-Quality Turkish Fabric",
+          "Orthopedic Mattress",
+          "Strong Wooden Frame",
+          "Anti-Allergic Filling"
+        ]
       }
     }
   },
@@ -75,7 +93,7 @@
     "comingSoon": "Calculator coming soon...",
     "disclaimer": "Disclaimer: Prices shown are approximate and for orientation purposes only. The final price may vary based on specific requirements, materials availability, and complexity of the design. Please contact us for an accurate quote.",
     "furnitureType": "What would you like to build?",
-    "size": "Size (in square meters - m²)",
+    "size": "Size",
     "material": "Material Quality",
     "types": {
       "kitchen": "Kitchen",
