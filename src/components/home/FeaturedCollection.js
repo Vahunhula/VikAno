@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import kitchenImage from '../../assets/images/Kitchen.jpg';
 import closetImage from '../../assets/images/Closet.jpg';
 import bedroomImage from '../../assets/images/AnotherBedroom.jpg';
+import { isIOS } from '../../utils/iosDetection';
+import '../common/iOSFixes.css';
 
 // Ensure ScrollTrigger is registered
 gsap.registerPlugin(ScrollTrigger);
@@ -40,7 +42,7 @@ const FeaturedCollection = () => {
   const [showPopup, setShowPopup] = useState(false);
   const popupRef = useRef(null);
   const closeButtonRef = useRef(null);
-  const [scrollPosition, setScrollPosition] = useState(0);    const handleViewItem = (item) => {
+  const [scrollPosition, setScrollPosition] = useState(0);  const handleViewItem = (item) => {
     // Store current scroll position before showing modal
     const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
     setScrollPosition(currentScrollPos);
@@ -51,7 +53,12 @@ const FeaturedCollection = () => {
     
     // Prevent body scrolling while modal is open
     document.body.style.overflow = 'hidden';
-  };    const closePopup = () => {
+    
+    // Add special class for iOS devices to help with position:fixed issues
+    if (isIOS()) {
+      document.body.classList.add('modal-open');
+    }
+  };const closePopup = () => {
     if (showPopup) {
       // Detect iOS device
       const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -66,8 +73,13 @@ const FeaturedCollection = () => {
             setShowPopup(false);
             setSelectedItem(null);
             
-            // Restore scrolling
+        // Restore scrolling
             document.body.style.overflow = '';
+            
+            // Remove iOS-specific class
+            if (isIOS()) {
+              document.body.classList.remove('modal-open');
+            }
             
             // Restore scroll position on non-iOS devices
             window.scrollTo({
@@ -240,39 +252,143 @@ const FeaturedCollection = () => {
               </div>
             </div>
           ))}
-        </div>            {/* Popup Modal */}        {showPopup && selectedItem && (          <div 
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 overflow-y-auto overflow-x-hidden"
-            onClick={(e) => {
-              if (e.target === e.currentTarget) {
-                closePopup();
-              }
-            }}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="dialog-title"
-            style={{ WebkitOverflowScrolling: 'touch' }} /* Improve iOS scrolling */
-          >            <div className="min-h-screen px-4 flex items-center justify-center py-6 sm:py-8">
+        </div>        {/* Popup Modal */}
+        {showPopup && selectedItem && (
+          <>
+            {isIOS() ? (
+              /* iOS-specific modal layout */
               <div 
-                ref={popupRef}
-                className="relative bg-white dark:bg-gray-800 rounded-lg w-full max-w-3xl mx-auto shadow-2xl overflow-hidden transition-colors duration-300 flex flex-col md:flex-row"
-                style={{ maxHeight: 'calc(100vh - 40px)' }} /* Prevent modal from extending beyond viewport */
+                className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 ios-modal-container ios-safe-height"
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) {
+                    closePopup();
+                  }
+                }}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="dialog-title"
               >
-                {/* Close button */}
-                <button
-                  ref={closeButtonRef}
-                  onClick={closePopup}
-                  className="absolute top-4 right-4 z-10 text-white hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-secondary rounded-full p-1 bg-gray-800/50"
-                  aria-label={t('featured.close')}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>                {/* Image Section - Left Side */}                <div className="relative md:w-2/5 h-56 md:h-auto">
-                  <img 
+                <div className="flex items-center justify-center p-4 min-h-full">
+                  <div 
+                    ref={popupRef}
+                    className="w-full ios-modal-content bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden"
+                  >
+                    {/* Close button for iOS */}
+                    <button
+                      ref={closeButtonRef}
+                      onClick={closePopup}
+                      className="absolute top-4 right-4 z-10 text-white hover:text-gray-200 focus:outline-none rounded-full p-1 bg-gray-800/70"
+                      aria-label={t('featured.close')}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                    
+                    {/* iOS Image section */}
+                    <div className="relative w-full h-48">
+                      <img 
+                        src={selectedItem.imageUrl}
+                        alt={t(`featured.items.${selectedItem.key}.title`)}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                      <h3 
+                        id="dialog-title" 
+                        className="absolute bottom-4 left-6 text-2xl font-bold text-white"
+                      >
+                        {t(`featured.items.${selectedItem.key}.title`)}
+                      </h3>
+                    </div>
+                    
+                    {/* iOS Content section */}
+                    <div className="p-6 ios-scroll-fix">
+                      <div className="flex items-center justify-between mb-6">
+                        <div className="text-gray-600 dark:text-gray-300">
+                          <span className="font-semibold">{t('calculator.size')}:</span> {selectedItem.size}
+                        </div>
+                        <div className="text-primary dark:text-secondary font-bold text-2xl">
+                          <span className="font-normal text-base mr-1">₾</span>
+                          {selectedItem.price}
+                        </div>
+                      </div>
+                      
+                      <div className="mb-6">
+                        <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
+                          {t('featured.materials')}:
+                        </h4>
+                        <ul className="grid gap-2 text-gray-600 dark:text-gray-300">
+                          {t(`featured.items.${selectedItem.key}.materials`, { returnObjects: true }).map((material, index) => (
+                            <li key={index} className="flex items-center">
+                              <svg className="h-5 w-5 text-primary dark:text-secondary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                              </svg>
+                              {material}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div className="flex items-center justify-end space-x-4 pt-4 mt-4">
+                        <button
+                          onClick={closePopup}
+                          className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                        >
+                          {t('featured.close')}
+                        </button>
+                        <a 
+                          href="/contact" 
+                          className="btn-primary"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            closePopup();
+                            window.location.href = '/contact';
+                          }}
+                        >
+                          {t('calculator.contactQuote')}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              /* Non-iOS modal layout */
+              <div 
+                className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 overflow-y-auto overflow-x-hidden"
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) {
+                    closePopup();
+                  }
+                }}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="dialog-title"
+                style={{ WebkitOverflowScrolling: 'touch' }}
+              >
+                <div className="min-h-screen px-4 flex items-center justify-center py-6 sm:py-8">
+                  <div 
+                    ref={popupRef}
+                    className="relative bg-white dark:bg-gray-800 rounded-lg w-full max-w-3xl mx-auto shadow-2xl overflow-hidden transition-colors duration-300 flex flex-col md:flex-row"
+                    style={{ maxHeight: 'calc(100vh - 40px)' }}
+                  >
+                    {/* Close button */}
+                    <button
+                      ref={closeButtonRef}
+                      onClick={closePopup}
+                      className="absolute top-4 right-4 z-10 text-white hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary dark:focus:ring-secondary rounded-full p-1 bg-gray-800/50"
+                      aria-label={t('featured.close')}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                    
+                    {/* Image Section - Left Side */}
+                    <div className="relative md:w-2/5 h-56 md:h-auto">                  <img 
                     src={selectedItem.imageUrl}
                     alt={t(`featured.items.${selectedItem.key}.title`)}
                     className="w-full h-full object-cover md:h-full md:rounded-l-lg"
-                    style={{ maxHeight: '350px' }} /* Control image height on mobile */
                   />
                   <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/60 to-transparent md:rounded-l-lg"></div>
                   <h3 
@@ -281,8 +397,11 @@ const FeaturedCollection = () => {
                   >
                     {t(`featured.items.${selectedItem.key}.title`)}
                   </h3>
-                </div>                {/* Content Section - Right Side */}
-                <div className="p-6 md:p-8 space-y-4 md:w-3/5 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 40px)', WebkitOverflowScrolling: 'touch' }}><div className="flex items-center justify-between mb-6">
+                </div>
+                
+                {/* Content Section - Right Side */}
+                <div className="p-6 md:p-8 space-y-4 md:w-3/5 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 40px)', WebkitOverflowScrolling: 'touch' }}>
+                  <div className="flex items-center justify-between mb-6">
                     <div className="text-gray-600 dark:text-gray-300">
                       <span className="font-semibold">{t('calculator.size')}:</span> {selectedItem.size}
                     </div>
@@ -290,7 +409,9 @@ const FeaturedCollection = () => {
                       <span className="font-normal text-base mr-1">₾</span>
                       {selectedItem.price}
                     </div>
-                  </div>                  <div className="mb-6">
+                  </div>
+                  
+                  <div className="mb-6">
                     <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
                       {t('featured.materials')}:
                     </h4>
@@ -324,11 +445,12 @@ const FeaturedCollection = () => {
                     >
                       {t('calculator.contactQuote')}
                     </a>
-                  </div>
-                </div>
+                  </div>                </div>
               </div>
             </div>
           </div>
+            )}
+          </>
         )}
 
         <div className="text-center mt-12">

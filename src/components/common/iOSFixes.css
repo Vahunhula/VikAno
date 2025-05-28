@@ -1,0 +1,76 @@
+/* iOS-specific fixes */
+
+/* Fix for modal positioning on iOS */
+.ios-modal-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+  overflow: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  /* Fix for bottom position on iOS */
+  padding-bottom: 60px !important;
+}
+
+.ios-modal-content {
+  margin: auto !important;
+  max-height: 85vh !important;
+  width: 90% !important;
+  max-width: 480px !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  transform: translateZ(0) !important; /* Force hardware acceleration */
+  /* Ensure content doesn't get cut off */
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* iOS-specific scrolling fixes */
+.ios-scroll-fix {
+  -webkit-overflow-scrolling: touch !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  overflow-x: hidden !important;
+  /* Add max-height to ensure scrollability */
+  max-height: 50vh !important;
+  flex: 1 !important;
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific styles */
+  .ios-safe-height {
+    /* Account for safe areas on newer iOS devices */
+    padding-top: env(safe-area-inset-top) !important;
+    padding-bottom: env(safe-area-inset-bottom) !important;
+    padding-left: env(safe-area-inset-left) !important;
+    padding-right: env(safe-area-inset-right) !important;
+  }
+    /* Fix position fixed issues on iOS */
+  body.modal-open {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  
+  /* Global iOS device class */
+  body.ios-device {
+    /* Apply any global iOS fixes */
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* Fix for iOS position:fixed issues */
+  @media screen and (max-width: 767px) {
+    .ios-device .fixed {
+      position: absolute;
+    }
+  }
+}

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import './App.css';
+import './components/common/iOSFixes.css';
+import { setupIOSViewport } from './utils/iosDetection';
 
 // Layout
 import Layout from './components/layout/Layout';
@@ -30,6 +32,9 @@ function App() {
   
   // Simulate minimum loading time to show the animation
   useEffect(() => {
+    // Set up iOS-specific viewport settings
+    setupIOSViewport();
+    
     // Ensure the loading screen shows for at least 2.5 seconds for a better effect
     const minLoadTime = setTimeout(() => {
       // This will allow the loading screen to be dismissed if assets are loaded
@@ -70,6 +75,11 @@ function App() {
 function AppContent() {
   const location = useLocation();
   const { t } = useTranslation();
+  
+  // Setup iOS-specific viewport meta and fixes
+  useEffect(() => {
+    setupIOSViewport();
+  }, []);
   
   // Update the document title when language changes or location changes
   useEffect(() => {
