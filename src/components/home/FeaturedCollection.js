@@ -6,7 +6,9 @@ import kitchenImage from '../../assets/images/Kitchen.jpg';
 import closetImage from '../../assets/images/Closet.jpg';
 import bedroomImage from '../../assets/images/AnotherBedroom.jpg';
 import { isIOS } from '../../utils/iosDetection';
+import IOSModal from '../common/IOSModal';
 import '../common/iOSFixes.css';
+import '../common/IOSModalStyles.css';
 
 // Ensure ScrollTrigger is registered
 gsap.registerPlugin(ScrollTrigger);
@@ -47,48 +49,21 @@ const FeaturedCollection = () => {
     const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
     setScrollPosition(currentScrollPos);
     
-    // Immediately show the modal without trying to adjust scroll position
+    // Show the modal
     setSelectedItem(item);
     setShowPopup(true);
     
-    // Prevent body scrolling while modal is open
-    document.body.style.overflow = 'hidden';
-    
-    // Add special class for iOS devices to help with position:fixed issues
-    if (isIOS()) {
-      document.body.classList.add('modal-open');
+    // Prevent body scrolling while modal is open (only needed for non-iOS)
+    if (!isIOS()) {
+      document.body.style.overflow = 'hidden';
     }
-  };const closePopup = () => {
+    // iOS-specific handling is done in the IOSModal component
+  };
+    
+  const closePopup = () => {
     if (showPopup) {
-      // Detect iOS device
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-      
-      // Use simpler animation for iOS
-      if (isIOS) {
-        gsap.to(popupRef.current, {
-          opacity: 0,
-          duration: 0.15,
-          ease: 'power1.in',
-          onComplete: () => {
-            setShowPopup(false);
-            setSelectedItem(null);
-            
-        // Restore scrolling
-            document.body.style.overflow = '';
-            
-            // Remove iOS-specific class
-            if (isIOS()) {
-              document.body.classList.remove('modal-open');
-            }
-            
-            // Restore scroll position on non-iOS devices
-            window.scrollTo({
-              top: scrollPosition,
-              behavior: 'auto'
-            });
-          }
-        });
-      } else {
+      // Only animate for non-iOS devices (iOS has its own animation in the component)
+      if (!isIOS()) {
         gsap.to(popupRef.current, {
           opacity: 0,
           y: 20,
@@ -109,10 +84,13 @@ const FeaturedCollection = () => {
             });
           }
         });
+      } else {
+        // Immediately close for iOS (component handles animations)
+        setShowPopup(false);
+        setSelectedItem(null);
       }
     }
-  };
-    // Handle popup keyboard interactions and animations
+  };    // Handle popup keyboard interactions and animations
   useEffect(() => {
     const handleEscKey = (event) => {
       if (event.key === 'Escape') {
@@ -121,25 +99,11 @@ const FeaturedCollection = () => {
     };
 
     if (showPopup) {
-      closeButtonRef.current?.focus();
-      
-      // Detect iOS device
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-      
-      // Use simpler animation for iOS to improve performance
-      if (isIOS) {
-        gsap.fromTo(
-          popupRef.current,
-          { 
-            opacity: 0
-          },
-          { 
-            opacity: 1,
-            duration: 0.2,
-            ease: 'power1.out'
-          }
-        );
-      } else {
+      // Only handle animation and focus for non-iOS devices
+      // iOS-specific behavior is handled in the IOSModal component
+      if (!isIOS()) {
+        closeButtonRef.current?.focus();
+        
         gsap.fromTo(
           popupRef.current,
           { 
@@ -155,9 +119,9 @@ const FeaturedCollection = () => {
             ease: 'power2.out'
           }
         );
+        
+        window.addEventListener('keydown', handleEscKey);
       }
-      
-      window.addEventListener('keydown', handleEscKey);
     }
     
     return () => {
@@ -255,105 +219,15 @@ const FeaturedCollection = () => {
         </div>        {/* Popup Modal */}
         {showPopup && selectedItem && (
           <>
+            {/* Use the specialized iOS Modal component for iOS devices */}
             {isIOS() ? (
-              /* iOS-specific modal layout */
-              <div 
-                className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 ios-modal-container ios-safe-height"
-                onClick={(e) => {
-                  if (e.target === e.currentTarget) {
-                    closePopup();
-                  }
-                }}
-                role="dialog"
-                aria-modal="true"
-                aria-labelledby="dialog-title"
-              >
-                <div className="flex items-center justify-center p-4 min-h-full">
-                  <div 
-                    ref={popupRef}
-                    className="w-full ios-modal-content bg-white dark:bg-gray-800 rounded-lg shadow-2xl overflow-hidden"
-                  >
-                    {/* Close button for iOS */}
-                    <button
-                      ref={closeButtonRef}
-                      onClick={closePopup}
-                      className="absolute top-4 right-4 z-10 text-white hover:text-gray-200 focus:outline-none rounded-full p-1 bg-gray-800/70"
-                      aria-label={t('featured.close')}
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    </button>
-                    
-                    {/* iOS Image section */}
-                    <div className="relative w-full h-48">
-                      <img 
-                        src={selectedItem.imageUrl}
-                        alt={t(`featured.items.${selectedItem.key}.title`)}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                      <h3 
-                        id="dialog-title" 
-                        className="absolute bottom-4 left-6 text-2xl font-bold text-white"
-                      >
-                        {t(`featured.items.${selectedItem.key}.title`)}
-                      </h3>
-                    </div>
-                    
-                    {/* iOS Content section */}
-                    <div className="p-6 ios-scroll-fix">
-                      <div className="flex items-center justify-between mb-6">
-                        <div className="text-gray-600 dark:text-gray-300">
-                          <span className="font-semibold">{t('calculator.size')}:</span> {selectedItem.size}
-                        </div>
-                        <div className="text-primary dark:text-secondary font-bold text-2xl">
-                          <span className="font-normal text-base mr-1">₾</span>
-                          {selectedItem.price}
-                        </div>
-                      </div>
-                      
-                      <div className="mb-6">
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
-                          {t('featured.materials')}:
-                        </h4>
-                        <ul className="grid gap-2 text-gray-600 dark:text-gray-300">
-                          {t(`featured.items.${selectedItem.key}.materials`, { returnObjects: true }).map((material, index) => (
-                            <li key={index} className="flex items-center">
-                              <svg className="h-5 w-5 text-primary dark:text-secondary mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                              </svg>
-                              {material}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div className="flex items-center justify-end space-x-4 pt-4 mt-4">
-                        <button
-                          onClick={closePopup}
-                          className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
-                        >
-                          {t('featured.close')}
-                        </button>
-                        <a 
-                          href="/contact" 
-                          className="btn-primary"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            closePopup();
-                            window.location.href = '/contact';
-                          }}
-                        >
-                          {t('calculator.contactQuote')}
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <IOSModal 
+                item={selectedItem} 
+                isOpen={showPopup} 
+                onClose={closePopup} 
+              />
             ) : (
-              /* Non-iOS modal layout */
+              /* Regular modal layout for non-iOS devices */
               <div 
                 className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 overflow-y-auto overflow-x-hidden"
                 onClick={(e) => {

@@ -1,14 +1,14 @@
-// Utility function to detect iOS devices
+// More robust iOS detection
 export const isIOS = () => {
-  return (
-    // Standard iOS detection
-    /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream ||
-    // MacOS using touch (likely iPad OS)
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
-  );
+  // Most reliable way to detect iOS devices
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  const isIOS = /iphone|ipad|ipod/.test(userAgent);
+  const isAppleDesktop = userAgent.includes('mac') && 'ontouchend' in document;
+  
+  return isIOS || isAppleDesktop;
 };
 
-// Add meta viewport tag to prevent zooming on iOS
+// Add meta viewport tag for iOS
 export const setupIOSViewport = () => {
   if (isIOS()) {
     // Find existing viewport meta tag or create a new one
@@ -20,13 +20,11 @@ export const setupIOSViewport = () => {
       document.head.appendChild(viewportMeta);
     }
     
-    // Set optimal viewport settings for iOS
-    viewportMeta.content = 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, viewport-fit=cover';
+    // Set iOS-optimized viewport settings - single setting to avoid conflicts
+    viewportMeta.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover';
     
     // Add CSS class to body for iOS-specific styling
     document.body.classList.add('ios-device');
-    
-    viewportMeta.content = 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no';
     
     // Add safe area insets for iOS
     const metaViewport = document.createElement('meta');

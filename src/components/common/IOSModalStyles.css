@@ -1,0 +1,44 @@
+/* iOS Modal specific styles */
+
+/* For preventing background scroll when modal is open */
+body.ios-modal-open {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-overflow-scrolling: none;
+}
+
+/* iOS modal wrapper - using fixed position with custom vh variable */
+.ios-modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--vh, 1vh) * 100);
+  z-index: 9999;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+/* Global iOS device class */
+.ios-device button,
+.ios-device a {
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+/* Fix for making iOS inputs work better */
+.ios-device input,
+.ios-device textarea,
+.ios-device select {
+  font-size: 16px; /* Prevents iOS zoom on input focus */
+}
+
+/* Fix for -webkit-overflow-scrolling on iOS */
+.ios-device .overflow-auto,
+.ios-device .overflow-y-auto {
+  -webkit-overflow-scrolling: touch;
+}

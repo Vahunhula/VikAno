@@ -1,0 +1,32 @@
+/* iOS overscroll fix */
+html, body {
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+  position: relative; /* For fixed position reference */
+}
+
+body.ios-modal-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  height: 100%;
+  /* Use custom viewport height */
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Apply 100vh fix */
+.full-height {
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Fix iOS position:fixed bugs with absolute positioning */
+@supports (-webkit-touch-callout: none) {
+  .fixed-ios {
+    position: absolute;
+    transition: none !important;
+  }
+}

@@ -3,7 +3,10 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useTranslation } from 'react-i18next';
 import './App.css';
 import './components/common/iOSFixes.css';
+import './components/common/IOSModalStyles.css';
+import './components/common/IOSScrollFix.css';
 import { setupIOSViewport } from './utils/iosDetection';
+import { applyIOSFixes } from './utils/iosFixes';
 
 // Layout
 import Layout from './components/layout/Layout';
@@ -79,6 +82,7 @@ function AppContent() {
   // Setup iOS-specific viewport meta and fixes
   useEffect(() => {
     setupIOSViewport();
+    applyIOSFixes();
   }, []);
   
   // Update the document title when language changes or location changes
