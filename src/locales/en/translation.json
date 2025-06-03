@@ -239,23 +239,84 @@
         "description": "Charming cottage with landscaped surroundings and patio"
       }
     }
-  },"about": {
+  },  "about": {
     "title": "About VikAno",
     "description": "Our company specializes in the custom manufacturing of furniture, cottages, and kitchen interiors.",
     "subheader": "Custom Craftsmanship Excellence",
+    "hero": {
+      "years": "Years",
+      "projects": "Projects",
+      "satisfaction": "Satisfaction"
+    },
+    "passionTitle": "Our Passion for Custom Craftsmanship",
+    "companyOverview1": "Our company specializes in the custom manufacturing of furniture, cottages, and kitchen interiors. We create functional, high‑quality, and aesthetically refined products that fully adapt to your needs and tastes.",
+    "companyOverview2": "For us, not only is high quality important, but also timely service and close collaboration with our clients—together with you, we craft a space that perfectly suits your environment.",
+    "features": {
+      "customDesigns": "Custom designs tailored to your specific needs",
+      "premiumMaterials": "Premium materials for lasting durability",
+      "collaborative": "Collaborative design process from start to finish"
+    },
+    "stats": {
+      "yearsExperience": "Years Experience",
+      "projectsCompleted": "Projects Completed",
+      "clientSatisfaction": "Client Satisfaction",
+      "masterCraftsmen": "Master Craftsmen"
+    },
+    "missionCardTitle": "Quality Commitment",
+    "missionCardDesc": "We use only the finest materials and traditional woodworking techniques to ensure durability and timeless elegance in every piece we create.",
+    "timelyServiceTitle": "Timely Service",
+    "timelyServiceDesc": "We understand the importance of deadlines and strive to deliver our custom solutions on schedule without compromising on quality.",
+    "clientCollabTitle": "Client Collaboration",
+    "clientCollabDesc": "We work closely with our clients throughout the entire process to ensure your vision becomes reality, exactly as you imagined.",
+    "valuesCards": {
+      "craftsmanshipTitle": "Craftsmanship",
+      "craftsmanshipDesc": "We take pride in traditional woodworking techniques combined with modern precision.",
+      "collaborationTitle": "Collaboration",
+      "collaborationDesc": "We work closely with our clients to understand their vision and bring it to life.",
+      "innovationTitle": "Innovation",
+      "innovationDesc": "We continuously explore new design concepts and materials to stay at the forefront.",
+      "excellenceTitle": "Excellence",
+      "excellenceDesc": "We never compromise on quality, from concept to final delivery and installation."    },
     "mission": "Our Mission",
     "missionText": "At VikAno, our mission is to transform spaces through exceptional craftsmanship and personalized design.",
+    "missionDescription": "We create functional, high‑quality, and aesthetically refined products that fully adapt to your needs and tastes, ensuring that your space is perfectly suited to your environment.",
     "values": "Our Values",
     "specializations": "Our Specializations",
     "furniture": "Custom Furniture",
+    "furnitureDescription": "Bespoke pieces crafted to your exact specifications, combining beauty and functionality to create furniture that perfectly suits your space and lifestyle.",
     "cottages": "Cottage Construction",
+    "cottagesDescription": "Beautiful, functional cottages built with precision and care, designed to provide comfort and durability in harmony with the surrounding environment.",
     "kitchens": "Kitchen Interiors",
+    "kitchensDescription": "Elegantly designed kitchen spaces that combine beauty with practicality, creating the perfect environment for both cooking and entertaining.",
+    "specialTags": {
+      "premium": "PREMIUM",
+      "featured": "FEATURED",
+      "popular": "POPULAR",
+      "tables": "Tables",
+      "cabinets": "Cabinets",
+      "shelving": "Shelving",
+      "chairs": "Chairs",
+      "design": "Design",
+      "construction": "Construction",
+      "interiors": "Interiors",
+      "landscaping": "Landscaping",
+      "cabinetry": "Cabinetry",
+      "islands": "Islands",
+      "storage": "Storage",
+      "surfaces": "Surfaces"
+    },
     "promise": "Our Promise To You",
+    "promiseList": {
+      "timely": "Timely completion of your project",
+      "quality": "Exceptional quality craftsmanship",
+      "closeCollaboration": "Close collaboration throughout the process",
+      "adapted": "Products perfectly adapted to your needs"
+    },
     "cta": "Ready to Transform Your Space?",
     "ctaText": "Let us help you create furniture and interiors that perfectly suit your needs and reflect your personality.",
     "exploreButton": "Explore Our Work",
     "contactButton": "Contact Us"
-  },  "contact": {
+  },"contact": {
     "title": "Contact Us",
     "description": "Have questions or ready to transform your space? Reach out to us today.",
     "callToAction": "Get in touch with our team",    "info": {      "address": "Tbilisi, Georgia",
